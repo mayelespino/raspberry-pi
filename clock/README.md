@@ -8,5 +8,7 @@ to set local time: http://stackoverflow.com/questions/29347981/change-date-time-
 
 crontab: https://pypi.python.org/pypi/python-crontab
 
+text to speach: http://raspberrypi.stackexchange.com/questions/1015/has-anyone-got-a-text-to-speech-engine-installed
+
 git pull : http://stackoverflow.com/questions/4414140/git-auto-pull-using-cronjob
 
