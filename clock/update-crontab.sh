@@ -1,8 +1,8 @@
 #!/bin/bash
 cat << EOF > /home/pi/clock/clock.tab
 # m h  dom mon dow   command
-0 1 * * * /home/pi/clock/sync-clock.sh
-0 1 * * * /home/pi/clock/update-crontab.sh
+0 */6 * * * /home/pi/clock/sync-clock.sh
+0 */2 * * * /home/pi/clock/update-crontab-gist.sh
 #-------
 EOF
 #
