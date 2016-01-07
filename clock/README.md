@@ -13,3 +13,6 @@ text to speach: http://raspberrypi.stackexchange.com/questions/1015/has-anyone-g
 
 git pull : http://stackoverflow.com/questions/4414140/git-auto-pull-using-cronjob
 
+- rsstail
+http://unix.stackexchange.com/questions/22137/how-to-watch-rss-feed-for-new-entries-from-bash-script
+
