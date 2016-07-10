@@ -1,23 +1,41 @@
 <html>
+
 <head>
-<title>(Type a title for your page here)</title>
-<script type="text/javascript"> 
-function display_c(){
-var refresh=1000; // Refresh rate in milli seconds
-mytime=setTimeout('display_ct()',refresh)
-}
-
-function display_ct() {
-var strcount
-var x = new Date()
-document.getElementById('ct').innerHTML = x;
-tt=display_c();
-}
-</script>
 </head>
+<body>
+<script type="text/javascript">
+ function timedMsg()
+  {
+    var t=setInterval("change_time();",1000);
+  }
+ function change_time()
+ {
+   var d = new Date();
+   var curr_hour = d.getHours();
+   var curr_min = d.getMinutes();
+   var curr_sec = d.getSeconds();
+   if(curr_hour > 12)
+     curr_hour = curr_hour - 12;
+   document.getElementById('Hour').innerHTML =curr_hour+':';
+   document.getElementById('Minut').innerHTML=curr_min+':';
+   document.getElementById('Second').innerHTML=curr_sec;
+ }
+timedMsg();   
+</script>
 
-<body onload=display_ct();>
-<H1><span id='ct' ></span></H1>
+ <table>
+   <tr>
+  <td style="color:green;font-size:xx-large;">Current time is :</td>
+
+  <td id="Hour" style="color:green;font-size:xx-large;"></td>
+  <td id="Minut" style="color:green;font-size:xx-large;"></td>
+  <td id="Second" style="color:green;font-size:xx-large;"></td>
+  <tr>
+ </table> 
+
+
+ 
 
 </body>
 </html>
+
