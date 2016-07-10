@@ -53,7 +53,7 @@ def writeCronFile(alarm,days=None):
 
 @app.route('/alarms/', methods=['DELETE'])
 def clearAlarms():
-    with open ("/var/www/alarms.txt", "w") as myfile:/Users/mayelespino/Desktop/Canon CanoScan LiDE 700F On-screen Manual
+    with open ("/var/www/alarms.txt", "w") as myfile:
         line = "# m h  dom mon dow   command\n"
         myfile.write(line)
     call(["/usr/bin/crontab", "-r"])
