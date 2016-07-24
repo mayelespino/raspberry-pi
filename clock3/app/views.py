@@ -54,8 +54,10 @@ def writeCronFile(alarm,days=None):
 @app.route('/alarms/', methods=['DELETE'])
 def clearAlarms():
     with open ("/var/www/alarms.txt", "w") as myfile:
-        line = "# m h  dom mon dow   command\n"
-        myfile.write(line)
+        cronFile = """@reboot /var/www/resync.sh\n
+        "@reboot /var/www/reload.sh\n 
+		"# m h  dom mon dow   command\n"""
+        myfile.write(cronFile)
     call(["/usr/bin/crontab", "-r"])
     return "Alarms cleared!\n"
 

@@ -1,2 +1,2 @@
 #!/bin/bash
-/usr/bin/crontab /var/www/html/alarms.txt
+sudo /usr/bin/crontab /var/www/html/alarms.txt

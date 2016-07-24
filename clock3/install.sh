@@ -32,8 +32,8 @@ sudo chmod 755 /var/www/alarms.txt
 sudo cp runApp.sh /var/www/
 sudo chmod +x /var/www/runApp.sh 
 #
-sudo cp {run.py,alarm.sh,resync.sh} /var/www/
-sudo chmod +x /var/www/{run.py,alarm.sh,resync.sh}
+sudo cp {run.py,alarm.sh,resync.sh,reload.sh} /var/www/
+sudo chmod +x /var/www/{run.py,alarm.sh,resync.sh,reload.sh}
 #
 echo "10)index"
 sudo cp index.html /var/www/html/
