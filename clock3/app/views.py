@@ -20,7 +20,7 @@ def index():
         
 @app.route('/alarms/', methods=['GET'])
 def doGet():
-    with open ("/var/www/alarms.txt", "r") as myfile:
+    with open ("/var/www/html/alarms.txt", "r") as myfile:
         data="".join(line for line in myfile)
     return data
 
@@ -64,14 +64,8 @@ def clearAlarms():
 @app.route('/alarms/reload/', methods=['POST'])
 def reloadCron():
     call(["/usr/bin/crontab", "-r"])
-    call(["/usr/bin/crontab", "/var/www/alarms.txt"])
+    call(["/usr/bin/crontab", "/var/www/html/alarms.txt"])
     return "alarm crontab reloaded\n"
 #   
-# EXAMPLES OF CURL COMMANDS TO BE USED
-#
-# curl -X POST http://localhost:5000/alarms/9:00
-# curl -X GET http://localhost:5000/alarms/
-# curl -X GET http://localhost:5000/
-# curl -X DELETE http://localhost:5000/alarms/
         
         

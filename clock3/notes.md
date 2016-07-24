@@ -34,6 +34,7 @@ http://blog.luisrei.com/articles/flaskrest.html
 * https://www.pantz.org/software/cron/croninfo.html
 * https://www.gaggl.com/2013/01/installing-omxplayer-on-raspberry-pi/
 * http://www.raspberry-projects.com/pi/software_utilities/media-players/omxplayer
+* https://www.raspberrypi.org/forums/viewtopic.php?f=51&t=45265
 
 # javascript
 * http://stackoverflow.com/questions/14563234/php-with-javascript-code-live-clock
