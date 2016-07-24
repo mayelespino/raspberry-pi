@@ -27,8 +27,8 @@ sudo cp ../mp3s /var/www/mp3/
 echo "9)alarms flask app"
 sudo cp run.py /var/www/
 sudo chmod +x /var/www/run.py
-sudo touch /var/www/alarms.txt
-sudo chmod 755 /var/www/alarms.txt
+sudo touch /var/www/html/alarms.txt
+sudo chmod 755 /var/www/html/alarms.txt
 sudo cp runApp.sh /var/www/
 sudo chmod +x /var/www/runApp.sh 
 #
@@ -40,6 +40,9 @@ sudo cp index.html /var/www/html/
 #
 echo "11) monit"
 sudo apt-get install -y monit
+#
+echo "12) Install aclock as a service."
+cp aclock.service /lib/systemd/system/
 #
 echo "done!!"
 

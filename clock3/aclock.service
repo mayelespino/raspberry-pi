@@ -1,0 +1,10 @@
+[Unit]
+Description=Flask REST interface to alarm clock service
+ 
+[Service]
+ExecStart=/var/www/run.py
+StandardOutput=null
+ 
+[Install]
+WantedBy=multi-user.target
+Alias=aclock.service
