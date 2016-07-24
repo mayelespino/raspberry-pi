@@ -13,7 +13,7 @@ sudo pip install flask
 echo "5)pytz"
 sudo pip install pytz
 echo "6)omxplayer"
-sudo apt-get install omxplayer
+sudo apt-get install -y omxplayer
 #
 echo "7)/var/www/app"
 #sudo mkdir -p /var/www/app
@@ -29,11 +29,17 @@ sudo cp run.py /var/www/
 sudo chmod +x /var/www/run.py
 sudo touch /var/www/alarms.txt
 sudo chmod 755 /var/www/alarms.txt
-#
-echo "index"
-sudo cp index.html /var/www/html/
+sudo cp runApp.sh /var/www/
+sudo chmod +x /var/www/runApp.sh 
 #
 sudo cp {run.py,alarm.sh,resync.sh} /var/www/
 sudo chmod +x /var/www/{run.py,alarm.sh,resync.sh}
-
+#
+echo "10)index"
+sudo cp index.html /var/www/html/
+#
+echo "11) monit"
+sudo apt-get install -y monit
+#
+echo "done!!"
 

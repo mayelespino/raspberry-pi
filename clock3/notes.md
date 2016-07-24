@@ -1,3 +1,14 @@
+# curl commands
+```
+curl -X POST http://172.16.42.28:5000/alarms/reload/
+curl -X GET http://172.16.42.28:5000/alarms/
+curl -X DELETE http://172.16.42.28:5000/alarms/
+curl -X POST http://172.16.42.28:5000/alarms/6:00/Mon-Fri
+curl -X GET http://172.16.42.28:5000/
+curl -X POST http://172.16.42.28:5000/alarms/9:00
+
+```
+
 # Usefull links
 * http://raspberrypi.stackexchange.com/questions/38025/disable-console-autologin-on-raspbian-jessie
 * https://www.raspberrypi.org/forums/viewtopic.php?f=91&t=112702
@@ -27,8 +38,12 @@ http://blog.luisrei.com/articles/flaskrest.html
 # javascript
 * http://stackoverflow.com/questions/14563234/php-with-javascript-code-live-clock
 * http://www.pratermade.com/2014/08/setting-up-your-raspberry-pi-environment/
+* http://www.htmlgoodies.com/beyond/javascript/read-text-files-using-the-javascript-filereader.html#fbid=AMBhy7XR7d1
 
 # additional installations
 ```
 sudo pip install pytz
 ```
+
+# system config
+* http://askubuntu.com/questions/175751/how-do-i-run-a-python-script-in-the-background-and-restart-it-after-a-crash
