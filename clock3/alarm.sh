@@ -1,2 +1,3 @@
 #!/bin/bash
-sudo /usr/bin/omxplayer /var/www/mp3s/"$1" > /dev/null
+song=`ls -1 /var/www/mp3s/wakeup | xargs shuf -n1 -e`
+/usr/bin/omxplayer /var/www/mp3s/wakeup/${song} > /dev/null

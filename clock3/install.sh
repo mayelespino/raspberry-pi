@@ -20,9 +20,9 @@ echo "7)/var/www/app"
 sudo cp -R app /var/www/
 sudo chmod -R 775 /var/www/app
 echo "8)/var/www/mp3"
-sudo mkdir -p /var/www/mp3
-sudo chmod 775 /var/www/mp3 
-sudo cp ../mp3s /var/www/mp3/
+sudo mkdir -p /var/www/mp3/wakeup
+sudo chmod 775 /var/www/mp3/wakeup
+#sudo cp ../mp3s /var/www/mp3/
 #
 echo "9)alarms flask app"
 sudo cp run.py /var/www/
