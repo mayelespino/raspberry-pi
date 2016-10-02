@@ -1,14 +1,25 @@
 ---
 - hosts: alarm
   remote_user: pi
+  sudo: yes
   tasks:
     - name: test connection
       ping:
+      tags:
+        - ping
+    - name: make directories
+      file: path=/var/www/{{item}} state=directory
+      with_items:
+        - mp3
+        - mp3/wakeup
+        - mp3/sleep
+      tags: 
+        - mkdirs
     - name: copy files
       sudo: yes
       copy: 
         src="{{ item }}" 
-        dest=/var/www/alarm.sh 
+        dest=/var/www/
         owner=root 
         group=root 
         mode=0777 
@@ -17,3 +28,21 @@
         - ~/Repos/raspberry-pi/clock3/*.sh
         - ~/Repos/raspberry-pi/clock3/*.py
         - ~/Repos/raspberry-pi/clock3/*.html
+      tags:
+        - copyfiles
+    - name: install apache2
+      package: name=apache2 state=latest
+    - name: install python-pip
+      package: name=python-pip state=latest
+    - name: install python-dev
+      package: name=python-dev state=latest
+    - name: install build-essential
+      package: name=build-essential state=latest
+    - name: install omxplayer
+      package: name=omxplayer state=latest
+    - name: install monit
+      package: name=monit state=latest
+    - name: install pytz
+      pip: name=pytz 
+    - name: install flask
+      pip: name=flask 
