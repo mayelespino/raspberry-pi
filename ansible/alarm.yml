@@ -1,0 +1,19 @@
+---
+- hosts: alarm
+  remote_user: pi
+  tasks:
+    - name: test connection
+      ping:
+    - name: copy files
+      sudo: yes
+      copy: 
+        src="{{ item }}" 
+        dest=/var/www/alarm.sh 
+        owner=root 
+        group=root 
+        mode=0777 
+        force=true
+      with_fileglob:
+        - ~/Repos/raspberry-pi/clock3/*.sh
+        - ~/Repos/raspberry-pi/clock3/*.py
+        - ~/Repos/raspberry-pi/clock3/*.html
