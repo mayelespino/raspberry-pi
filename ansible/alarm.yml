@@ -15,7 +15,12 @@
         - mp3/sleep
       tags: 
         - mkdirs
-    - name: copy files
+    - name: copy mp3
+      sudo: yes
+      synchronize: src=~/Music/pi-alarm-mp3/mp3 dest=/var/www/
+      tags:
+        - copymp3s
+    - name: copy scripts
       sudo: yes
       copy: 
         src="{{ item }}" 
@@ -29,7 +34,7 @@
         - ~/Repos/raspberry-pi/clock3/*.py
         - ~/Repos/raspberry-pi/clock3/*.html
       tags:
-        - copyfiles
+        - copyscripts
     - name: install apache2
       package: name=apache2 state=latest
     - name: install python-pip
