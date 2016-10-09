@@ -32,9 +32,17 @@
       with_fileglob:
         - ~/Repos/raspberry-pi/clock3/*.sh
         - ~/Repos/raspberry-pi/clock3/*.py
-        - ~/Repos/raspberry-pi/clock3/*.html
-      tags:
+      tags: 
         - copyscripts
+    - name: copyIndex
+      copy: src=~/Repos/raspberry-pi/clock3/index.php
+        dest=/var/www/html/
+        owner=root 
+        group=root 
+        mode=0777 
+        force=true
+      tags: 
+        - copyIndex 
     - name: install apache2
       package: name=apache2 state=latest
     - name: install python-pip
@@ -51,3 +59,21 @@
       pip: name=pytz 
     - name: install flask
       pip: name=flask 
+    - name: installphp
+      package: name=php5 state=latest
+    - name: installlibapache2-mod-php5
+      package: name=libapache2-mod-php5 state=latest
+    - name: restart apache2
+      service: name=apache2 state=restarted
+      tags: restartApache
+    - name: stop flask
+      shell: /var/www/stopApp.sh
+      tags: 
+      - stopApp
+      - restartApp
+    - name: start flask
+      shell: /var/www/runApp.sh
+      tags: 
+        - startApp
+        - restartApp
+        
