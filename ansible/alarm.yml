@@ -13,6 +13,7 @@
         - mp3
         - mp3/wakeup
         - mp3/sleep
+        - app
       tags: 
         - mkdirs
     - name: copy mp3
@@ -43,6 +44,27 @@
         force=true
       tags: 
         - copyIndex 
+    - name: copy flask files
+      sudo: yes
+      copy: src=~/Repos/raspberry-pi/clock3/app
+        dest=/var/www
+        owner=root 
+        group=root 
+        mode=0777 
+        force=true
+      tags:
+        - flask
+    - name: copy monit files
+      sudo: yes
+      copy: src=~/Repos/raspberry-pi/clock3/conf.d/
+        dest=/etc/monit/conf.d/
+        owner=root 
+        group=root 
+        mode=0777 
+        force=true
+      tags:
+        - flask
+        - monit
     - name: install apache2
       package: name=apache2 state=latest
     - name: install python-pip
@@ -59,6 +81,8 @@
       pip: name=pytz 
     - name: install flask
       pip: name=flask 
+      tags:
+        - flask
     - name: installphp
       package: name=php5 state=latest
     - name: installlibapache2-mod-php5
