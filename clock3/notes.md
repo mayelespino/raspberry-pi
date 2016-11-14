@@ -1,12 +1,22 @@
 # curl commands
 ```
-curl -X POST http://172.16.42.28:5000/alarms/reload/
-curl -X GET http://172.16.42.28:5000/alarms/
-curl -X DELETE http://172.16.42.28:5000/alarms/
-curl -X POST http://172.16.42.28:5000/alarms/6:00/Mon-Fri
-curl -X GET http://172.16.42.28:5000/
-curl -X POST http://172.16.42.28:5000/alarms/9:00
+curl -X POST http://localhost:5000/alarms/reload/
+curl -X GET http://localhost:5000/alarms/
+curl -X DELETE http://localhost:5000/alarms/
+curl -X POST http://localhost:5000/alarms/6:00/Mon-Fri
+curl -X GET http://localhost:5000/
+curl -X POST http://localhost:5000/alarms/9:00
+curl -X POST http://localhost:5000/alarms/playnow/
+```
 
+```
+curl -X POST http://picron.local:5000/alarms/reload/
+curl -X GET http://picron.local:5000/alarms/
+curl -X DELETE http://picron.local:5000/alarms/
+curl -X POST http://picron.local:5000/alarms/6:00/Mon-Fri
+curl -X GET http://picron.local:5000/
+curl -X POST http://picron.local:5000/alarms/9:00
+curl -X POST http://picron.local:5000/alarms/playnow/
 ```
 
 # Usefull links
