@@ -25,15 +25,28 @@ def doGet():
     return data
 
 @app.route('/sleep/<time>', methods=['POST'])
-def addAlarmDefault(time):
+def addSleepDefault(time):
     writeCronFile(time, None, "sleep")
+    reloadCron()
     return time+"\n"
 
-@app.route('/sleep/<time>/<days>', methods=['POST'])
-def addAlarmParams(time, days, script="sleep"):
+@app.route('/alarms/<time>', methods=['POST'])
+def addAlarmDefault(time):
+    writeCronFile(time, None, "alarm")
+    reloadCron()
+    return time+"\n"
+
+@app.route('/alarms/<time>/<days>', methods=['POST'])
+def addAlarmParams(time, days, script="alarm"):
     writeCronFile(time,days, "sleep")
+    reloadCron()
     return time+" "+days+"\n"
 
+@app.route('/sleep/<time>/<days>', methods=['POST'])
+def addSleepParams(time, days, script="sleep"):
+    writeCronFile(time,days, "sleep")
+    return time+" "+days+"\n"
+    reloadCron()
 def writeCronFile(time, days=None, script="alarm"):
     if ':' in time:
         (hour, minute) = time.split(":")
@@ -53,14 +66,15 @@ def writeCronFile(time, days=None, script="alarm"):
         line = "{} {} * * {} /var/www/alarm.sh\n".format(minute,hour,days)
 
     with open ("/var/www/html/alarms.txt", "a") as myfile:
-        myfile.write(line+"<br/>")
+        myfile.write(line)
 
 @app.route('/alarms/', methods=['DELETE'])
 def clearAlarms():
+    call(["/usr/bin/crontab", "-r"])
     with open ("/var/www/html/alarms.txt", "w") as myfile:
         cronFile = """@reboot /var/www/resync.sh\n@reboot /var/www/reload.sh\n# m h  dom mon dow   command\n"""
         myfile.write(cronFile)
-    call(["/usr/bin/crontab", "-r"])
+    reloadCron()
     return "Alarms cleared!\n"
 
 @app.route('/alarms/reload/', methods=['POST'])
