@@ -3,6 +3,7 @@ import datetime
 from pytz import timezone
 from flask import request, session
 from subprocess import call
+from crontab import CronTab
 
 @app.route('/')
 @app.route('/index')
@@ -26,8 +27,12 @@ def doGet():
 
 @app.route('/sleep/<time>', methods=['POST'])
 def addSleepDefault(time):
-    writeCronFile(time, None, "sleep")
-    reloadCron()
+    cron  = CronTab(user=True)
+    job = cron.new(command='/var/www/sleep.sh')
+    job.dow.on(1,2,3,4,5)
+    job.hour.on(time)
+    cron.write()
+    cron.write('/var/www/html/cron.txt')
     return time+"\n"
 
 @app.route('/alarms/<time>', methods=['POST'])
