@@ -1,0 +1,22 @@
+<HTML>
+<H1>PiCron Alarm clock</H1>
+<a href="http://picron.local:5000/">current time</a>
+<br>
+<a href="http://picron.local:5000/alarms/">alarms</a>
+<pre>
+    get current time:
+    curl -X GET http://picron.local:5000/
+    get list of all cron jobs
+    curl -X GET http://picron.local:5000/cron/
+    delete all cron jobs
+    curl -X DELETE http://picron.local:5000/cron/
+    set a wake up time
+    curl -X POST http://picron.local:5000/wakeup/daily/6:00
+    curl -X POST http://picron.local:5000/wakeup/weekday/6:00
+    curl -X POST http://picron.local:5000/wakeup/now/
+    set a sleep time
+    curl -X POST http://picron.local:5000/sleep/daily/6:00
+    curl -X POST http://picron.local:5000/sleep/weekday/6:00
+    curl -X POST http://picron.local:5000/sleep/now/
+</pre>
+</HTML>

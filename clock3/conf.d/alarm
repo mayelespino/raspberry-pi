@@ -1,4 +1,4 @@
 check process alarm with pidfile /var/www/alarm.pid
-  start program = "/var/www/runApp.sh"
+  start program = "/var/www/startApp.sh"
   stop program = "/var/www/stopApp.sh"
 
