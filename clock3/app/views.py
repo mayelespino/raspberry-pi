@@ -22,9 +22,10 @@ def index():
 @app.route('/cron/', methods=['GET'])
 def doGet():
     cron  = CronTab(user=True)
+    returnString = ""
     for line in cron.lines:
-      print line
-    return
+        returnString = '%s%s\n' % (returnString, line)
+    return returnString
 
 @app.route('/cron/', methods=['DELETE'])
 def clearCron():
@@ -34,15 +35,28 @@ def clearCron():
 
 @app.route('/sleep/daily/<time>', methods=['POST'])
 def sleepDaily(time):
+    if ':' in time:
+        (hour, minute) = time.split(":")
+    else:
+        hour = time
+        minute = "00"
+
     cron  = CronTab(user=True)
     cron_job = cron.new(command='/var/www/sleep.sh')
     cron_job.enable()
-    cron_job.hour.on(time)
+    cron_job.hour.on(hour)
+    cron_job.minute.on(minute)
     cron.write()
     return "sleep daily at"+time+" added.\n"
 
 @app.route('/sleep/weekday/<time>', methods=['POST'])
 def sleepWeekday(time):
+    if ':' in time:
+        (hour, minute) = time.split(":")
+    else:
+        hour = time
+        minute = "00"
+
     cron  = CronTab(user=True)
     cron_job = cron.new(command='/var/www/sleep.sh')
     cron_job.dow.on(1,2,3,4,5)
@@ -58,6 +72,12 @@ def sleepNow():
 
 @app.route('/wakeup/daily/<time>', methods=['POST'])
 def wakeupDaily(time):
+    if ':' in time:
+        (hour, minute) = time.split(":")
+    else:
+        hour = time
+        minute = "00"
+
     cron  = CronTab(user=True)
     cron_job = cron.new(command='/var/www/wakeup.sh')
     cron_job.enable()
@@ -67,6 +87,12 @@ def wakeupDaily(time):
 
 @app.route('/wakeup/weekday/<time>', methods=['POST'])
 def wakeupWeekday(time):
+    if ':' in time:
+        (hour, minute) = time.split(":")
+    else:
+        hour = time
+        minute = "00"
+
     cron  = CronTab(user=True)
     cron_job = cron.new(command='/var/www/wakeup.sh')
     cron_job.dow.on(1,2,3,4,5)
