@@ -83,12 +83,10 @@
       pip: name=flask 
       tags:
         - flask
-    - name: installntpd
-      package: name=php5 state=latest
-    - name: installphp
-      apt: pkg=ntp state=latest update-cache=yes
-    - name: installlibapache2-mod-php5
-      package: name=libapache2-mod-php5 state=latest
+    - name: install python-crontab
+      pip: name=python-crontab
+    - name: install ntpd
+      package: name=ntpdate state=latest
     - name: restart apache2
       service: name=apache2 state=restarted
       tags: restartApache
@@ -98,7 +96,7 @@
       - stopApp
       - restartApp
     - name: start flask
-      shell: /var/www/runApp.sh
+      shell: /var/www/startApp.sh
       tags: 
         - startApp
         - restartApp
