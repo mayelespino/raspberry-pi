@@ -42,9 +42,9 @@ def clearCron():
     return "Alarms cleared!\n"
 
 @app.route('/mute', methods=['POST'])
-def mute(time):
+def mute():
     call(["killall", "/usr/bin/omxplayer.bin"])
-    return "sleep playing now.\n"
+    return "mute all playing now.\n"
 
 #
 # Sleep
