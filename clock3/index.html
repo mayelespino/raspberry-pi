@@ -63,9 +63,18 @@ timedMsg();
     curl -X POST http://picron.local:5000/wakeup/daily/6:00
     curl -X POST http://picron.local:5000/wakeup/weekday/6:00
     curl -X POST http://picron.local:5000/wakeup/now/
-    set a sleep time
+    set a sleep time:
     curl -X POST http://picron.local:5000/sleep/daily/6:00
     curl -X POST http://picron.local:5000/sleep/weekday/6:00
     curl -X POST http://picron.local:5000/sleep/now/
+    mute:
+    curl -X POST http://picron.local:5000/mute
+    curl -X POST http://picron.local:5000/muteall/now/
+    steam:
+    curl -X POST http://picron.local:5000/stream/dance/now/
+    curl -X POST http://picron.local:5000/stream/sleep/now/
+    curl -X POST http://picron.local:5000/stream/npr/now/
+    curl -X POST http://picron.local:5000/stream/cristiana/now/
+    curl -X POST http://picron.local:5000/stream/news/now/
 </pre>
 </HTML>
