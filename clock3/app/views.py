@@ -124,4 +124,34 @@ def wakeupNow():
     call(["/var/www/wakeup.sh"])
     return "alarm playing now.\n"
 
+@app.route('/muteall/now/', methods=['POST'])
+def muteAllNow():
+    call(["/var/www/muteAll.sh"])
+    return "mute all now.\n"
+
+@app.route('/stream/dance/now/', methods=['POST'])
+def streamDanceNow():
+    call(["/var/www/streamDance.sh"])
+    return "stream dance now.\n"
+
+@app.route('/stream/sleep/now/', methods=['POST'])
+def streamSleepNow():
+    call(["/var/www/streamSleep.sh"])
+    return "stream sleep now.\n"
+
+@app.route('/stream/npr/now/', methods=['POST'])
+def streamNprNow():
+    call(["/var/www/streamNPR.sh"])
+    return "stream NPR now.\n"
+
+@app.route('/stream/cristiana/now/', methods=['POST'])
+def streamCristianaNow():
+    call(["/var/www/streamCristiana.sh"])
+    return "stream cristiana now.\n"
+
+@app.route('/stream/news/now/', methods=['POST'])
+def streamNewsNow():
+    call(["/var/www/streamNews.sh"])
+    return "stream news now.\n"
+
 # EOF
