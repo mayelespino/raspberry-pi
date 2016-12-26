@@ -59,3 +59,6 @@ sudo pip install pytz
 
 # system config
 * http://askubuntu.com/questions/175751/how-do-i-run-a-python-script-in-the-background-and-restart-it-after-a-crash
+
+# additional packages
+- http://askubuntu.com/questions/339298/conveniently-schedule-a-command-to-run-later

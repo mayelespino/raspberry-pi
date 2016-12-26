@@ -1,3 +1,2 @@
 #!/bin/bash
-sudo -u pi vlc --quiet http://107.181.227.250:8194/
-
+nohup /usr/bin/omxplayer http://50.77.161.149:18000/ --vol 40 &

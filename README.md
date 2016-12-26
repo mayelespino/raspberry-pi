@@ -18,3 +18,13 @@ This is the current project. This is basically a REST API to the crontab system 
 ## PHP
 * https://www.raspberrypi.org/documentation/remote-access/web-server/apache.md
 * http://php.net/manual/en/timezones.america.php
+
+# Internet radio stream
+- https://www.internet-radio.com/search/
+- https://www.internet-radio.com/stations/news/
+## 
+- http://50.7.77.114:8550/
+## sleep
+- http://37.59.28.208:8722/listen.pls?sid=1
+- http://107.181.227.250:8194/
+
