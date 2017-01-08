@@ -44,7 +44,7 @@ def clearCron():
 @app.route('/mute', methods=['POST'])
 def mute():
     call(["killall", "/usr/bin/omxplayer.bin"])
-    return "mute all playing now.\n"
+    return "mute all now.\n"
 
 #
 # Sleep

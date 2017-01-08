@@ -85,6 +85,8 @@
         - flask
     - name: install python-crontab
       pip: name=python-crontab
+    - name: install jinja2
+      pip: name=jinja2
     - name: install ntpd
       package: name=ntpdate state=latest
     - name: restart apache2
