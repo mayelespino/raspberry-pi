@@ -23,7 +23,7 @@ def index():
     timeString = '[{}/{}/{} {}:{} {}]\n'.format(now.day,now.month,now.year,hour,now.minute,ampm)
     return timeString
 
-@app.route('/cron', methods=['GET'])
+@app.route('/cron/', methods=['GET'])
 def doGet():
     cron  = CronTab(user=True)
     returnString = ""
@@ -41,7 +41,7 @@ def clearCron():
     cron.write()
     return "Alarms cleared!\n"
 
-@app.route('/mute', methods=['POST'])
+@app.route('/mute/', methods=['POST'])
 def mute():
     call(["killall", "/usr/bin/omxplayer.bin"])
     return "mute all now.\n"
@@ -49,7 +49,7 @@ def mute():
 #
 # Sleep
 #
-@app.route('/sleep/daily/<time>', methods=['POST'])
+@app.route('/sleep/daily/<time>/', methods=['POST'])
 def sleepDaily(time):
     if ':' in time:
         (hour, minute) = time.split(":")
@@ -64,7 +64,7 @@ def sleepDaily(time):
     cron.write()
     return "sleep daily at ["+time+"] added.\n"
 
-@app.route('/sleep/weekday/<time>', methods=['POST'])
+@app.route('/sleep/weekday/<time>/', methods=['POST'])
 def sleepWeekday(time):
     if ':' in time:
         (hour, minute) = time.split(":")
@@ -88,7 +88,7 @@ def sleepNow():
 #
 # Wake Up
 #
-@app.route('/wakeup/daily/<time>', methods=['POST'])
+@app.route('/wakeup/daily/<time>/', methods=['POST'])
 def wakeupDaily(time):
     if ':' in time:
         (hour, minute) = time.split(":")
@@ -103,7 +103,7 @@ def wakeupDaily(time):
     cron.write()
     return "wakeup daily at ["+time+"] added.\n"
 
-@app.route('/wakeup/weekday/<time>', methods=['POST'])
+@app.route('/wakeup/weekday/<time>/', methods=['POST'])
 def wakeupWeekday(time):
     if ':' in time:
         (hour, minute) = time.split(":")
@@ -111,7 +111,7 @@ def wakeupWeekday(time):
         hour = time
         minute = "00"
     cron  = CronTab(user=True)
-    cron_job = cron.new(command='/var/www/sleep.sh')
+    cron_job = cron.new(command='/var/www/wakeup.sh')
     cron_job.dow.on(1,2,3,4,5)
     cron_job.hour.on(hour)
     cron_job.minute.on(minute)
