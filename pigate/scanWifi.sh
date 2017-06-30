@@ -1,22 +1,27 @@
 #!/bin/bash
 
-fping -c1 -g  10.0.1.0/24 > /dev/null 2>&1
-
-MAYELIPHONE=`arp -an | grep -i 70:48:0F:71:9E:C5`
+sudo /sbin/ip -s -s neigh flush all >/dev/null
+#/usr/bin/hcitool scan  > /dev/null
+sleep 5
+for i in {1..4}
+do
+	/usr/bin/fping -c1 -g  10.0.1.0/24 > /dev/null 2>&1
+	sleep 5
+done
 DATE=`date`
 
-if [ -n "${MAYELIPHONE}" ]
+/usr/sbin/arp -n | grep -i "70:48:0f:71:9e:c5" > /dev/null
+if [ $? -eq 0 ]
 then
-    if [ ! -e /tmp/iphone.home ]
-    then
-        touch /tmp/iphone.home
-        twidge update "IN [${DATE}]"
-    fi
+	twidge lsrecent | head -1 | grep _1_ >/dev/null
+	if [ $? -ne 0 ]
+	then
+        	twidge update "_1_ [${DATE}]"
+	fi
 else
-    echo "GONE!"
-    if [ -e /tmp/iphone.home ]
-    then
-        twidge update "OUT [${DATE}]"
-        rm -f /tmp/iphone.home
-    fi
+	twidge lsrecent | head -1 | grep _0_ >/dev/null
+        if [ $? -ne 0 ]
+        then
+                twidge update "_0_ [${DATE}]"
+        fi
 fi

@@ -1,13 +1,23 @@
 # raspberry pie projects
 These are my project for the raspberry pie
 
-## Clock3
+## Picron
 This is the current project. This is basically a REST API to the crontab system in the raspberry pi. I currently use it as an alarm clock and to go to sleep.
+
+[YouTube demo](https://youtu.be/hJEf7LCYN3s)
+
+## PiGate
+
+This is a set of programs working on a pi which :
+- A mail client which reads email from pi@mayel.info. It validates the message and executes on some commands
+- A Zookeeper ensamble to be used as a message bus between the other pies on the cluster (rack).
+
+===========
 
 # Links
 * Monit - https://mmonit.com/monit/documentation/
 
-### Ansible
+# Ansible
 * https://serversforhackers.com/an-ansible-tutorial
 * https://support.cumulusnetworks.com/hc/en-us/articles/205014637-Ansible-Simple-Playbook-Example-with-a-Quagga-Template#inventory_file
 
