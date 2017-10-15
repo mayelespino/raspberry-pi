@@ -36,6 +36,10 @@ http://blog.luisrei.com/articles/flaskrest.html
 # Turning Raspberry Pi into a web server
 * http://www.chrisjmendez.com/2016/06/30/turning-raspberry-pi-into-a-web-server/
 
+# Monit
+* http://docs.ansible.com/ansible/latest/monit_module.html
+* https://www.digitalocean.com/community/questions/monit-error-in-ubuntu
+
 # misc
 * http://stackoverflow.com/questions/2925230/get-235pm-instead-of-0235pm-from-python-date-time
 * http://askubuntu.com/questions/254826/how-to-force-a-clock-update-using-ntp
@@ -62,3 +66,6 @@ sudo pip install pytz
 
 # additional packages
 - http://askubuntu.com/questions/339298/conveniently-schedule-a-command-to-run-later
+
+# Ansible
+* https://gist.github.com/muloka/7687250
