@@ -29,12 +29,23 @@ This is a set of programs working on a pi which :
 * https://www.raspberrypi.org/documentation/remote-access/web-server/apache.md
 * http://php.net/manual/en/timezones.america.php
 
-# Internet radio stream
+## Internet radio stream
 - https://www.internet-radio.com/search/
 - https://www.internet-radio.com/stations/news/
-## 
 - http://50.7.77.114:8550/
 ## sleep
 - http://37.59.28.208:8722/listen.pls?sid=1
 - http://107.181.227.250:8194/
 
+## Bluetooth
+- http://www.instructables.com/id/Raspberry-Pi-Bluetooth-InOut-Board-or-Whos-Hom/
+- http://www.wolfteck.com/projects/raspi/iphone/
+- http://raspberrypi.stackexchange.com/questions/38508/bluetooth-connection-with-iphone
+
+## Gateway for raspberry pi
+- https://en.wikipedia.org/wiki/TextSecure
+- https://en.wikipedia.org/wiki/Signal_Protocol
+
+## Misc.
+- http://elinux.org/RPi_Resize_Flash_Partitions
+- https://www.youtube.com/watch?v=R4VovMDnsIE

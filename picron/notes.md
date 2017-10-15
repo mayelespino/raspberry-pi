@@ -69,3 +69,6 @@ sudo pip install pytz
 
 # Ansible
 * https://gist.github.com/muloka/7687250
+
+# Ubuntu
+* https://askubuntu.com/questions/187888/what-is-the-correct-way-to-completely-remove-an-application
