@@ -72,3 +72,12 @@ sudo pip install pytz
 
 # Ubuntu
 * https://askubuntu.com/questions/187888/what-is-the-correct-way-to-completely-remove-an-application
+
+# python crontab
+* http://blog.appliedinformaticsinc.com/managing-cron-jobs-with-python-crontab/
+
+# streaming audio
+* http://www.instructables.com/id/Raspberry-Pi-Internet-Radio-With-Flask/
+* https://www.internet-radio.com
+* https://stackoverflow.com/questions/20460296/playing-remote-audio-files-in-python
+* http://yodaconditional.blogspot.com/2013/05/playing-streaming-audio-with-python-and.html

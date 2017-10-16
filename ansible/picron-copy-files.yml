@@ -11,4 +11,7 @@
         group=root 
         mode=0777 
         force=true
- 
+    - name: stop picron app
+      command: /var/www/stopApp.sh
+    - name: start picron app
+      command: /var/www/startApp.sh

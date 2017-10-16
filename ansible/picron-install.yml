@@ -20,7 +20,6 @@
             regexp='# set httpd port 2812 and'
             insertbefore='# set httpd port 2812 and'
             line="set httpd port 2812 and\n  use address localhost\n  allow localhost"
-      tags: test
     - name: install pytz
       pip: name=pytz 
     - name: install flask
@@ -31,5 +30,17 @@
       pip: name=jinja2
     - name: install ntpd
       package: name=ntpdate state=latest
+    - name: Copy timezone file
+      sudo: yes
+      copy: src=~/Repos/raspberry-pi/picron/etc/timezone
+        dest=/etc/
+        owner=root
+        group=root
+        mode=0755
+        force=true
     - name: restart apache2
       service: name=apache2 state=restarted
+    - name: install mpd
+      apt: name=mpd update_cache=yes state=latest
+    - name: install mpc
+      apt: name=mpc update_cache=yes state=latest
