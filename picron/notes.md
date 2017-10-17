@@ -81,3 +81,14 @@ sudo pip install pytz
 * https://www.internet-radio.com
 * https://stackoverflow.com/questions/20460296/playing-remote-audio-files-in-python
 * http://yodaconditional.blogspot.com/2013/05/playing-streaming-audio-with-python-and.html
+* http://wiki.secondlife.com/wiki/Music_streams
+* https://www.calmsound.com/rainforest
+
+# to change the timezone to pacific
+https://www.raspberrypi.org/forums/viewtopic.php?t=4977&f=5
+```
+sudo rm /etc/localtime
+sudo ln -s /usr/share/zoneinfo/US/Pacific /etc/localtime
+sudo rm /etc/timezone
+echo "US/Pacific" | sudo tee /etc/timezone 
+```
