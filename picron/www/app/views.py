@@ -9,18 +9,26 @@ from crontab import CronTab
 #
 #sleep_stream_uri = 'http://mp3channels.webradio.antenne.de/chillout'
 #sleep_stream_uri = 'http://sl128.hnux.com'
-sleep_stream_uri = 'http://radio.stereoscenic.com/asp-s'
-relax_stream_uri = 'http://radio.nolife-radio.com:9000/stream'
+#sleep_stream_uri = 'http://radio.stereoscenic.com/asp-s'
+#relax_stream_uri = 'http://radio.nolife-radio.com:9000/stream'
 #dance_stream_uri = 'http://stream.dancewave.online:8080/dance.mp3'
-dance_stream_uri = 'http://pulseedm.cdnstream1.com:8124/1373_128'
-npr_stream_uri = 'https://nis.stream.publicradio.org/nis.mp3'
+#dance_stream_uri = 'http://pulseedm.cdnstream1.com:8124/1373_128'
+#npr_stream_uri = 'https://nis.stream.publicradio.org/nis.mp3'
 #logos_stream_uri = 'http://188.165.240.90:8193'
-logos_stream_uri = 'http://14223.live.streamtheworld.com:80/WFFHFM_SC'
+#logos_stream_uri = 'http://14223.live.streamtheworld.com:80/WFFHFM_SC'
 #clasic_stream_uri = 'http://cms.stream.publicradio.org/cms.mp3'
-clasic_stream_uri = 'http://q2stream.wqxr.org/q2'
-nature_stream_uri = ''
-alt_stream_uri = 'http://stream2.mpegradio.com:8070/'
-dj_stram_uri='http://151.80.108.126:9530'
+#clasic_stream_uri = 'http://q2stream.wqxr.org/q2'
+#nature_stream_uri = ''
+#alt_stream_uri = 'http://stream2.mpegradio.com:8070/'
+#dj_stram_uri='http://151.80.108.126:9530'
+stations = {}
+stations['sleep'] = 'http://radio.stereoscenic.com/asp-s'
+stations['relax'] = 'http://radio.nolife-radio.com:9000/stream'
+stations['dance'] = 'http://pulseedm.cdnstream1.com:8124/1373_128'
+stations['npr'] = 'https://nis.stream.publicradio.org/nis.mp3'
+stations['logos'] = 'http://14223.live.streamtheworld.com:80/WFFHFM_SC'
+stations['classic'] = 'http://q2stream.wqxr.org/q2'
+stations['alt'] = 'http://stream2.mpegradio.com:8070/'
 #
 # 
 #
@@ -74,7 +82,7 @@ def volumeUp(number):
 @app.route('/mute/', methods=['POST'])
 def mute():
     call(['mpc', 'clear'])
-    return "mute all now.\n"
+    return "mute now.\n"
 
 #
 # Sleep Cron
@@ -179,7 +187,7 @@ def muteWeekday(time):
     return "wakeup weekdays at ["+time+"] added.\n"
 
 #
-# Play Now
+# Sleep and Wake up 
 #
 @app.route('/sleep/now/', methods=['POST'])
 def sleepNow():
@@ -193,46 +201,23 @@ def wakeupNow():
     call(['mpc', 'play'])
     return "stream wakeup now.\n"
 
-@app.route('/dance/now/', methods=['POST'])
-def danceNow():
-    call(['mpc', 'add', dance_stream_uri])
-    call(['mpc', 'play'])
-    return "stream dance now.\n"
+#
+# Play now
+#
+@app.route('/play/<station>/now/', methods=['POST'])
+def stationNow(station):
+    if station not in stations:
+        return "Invalid selection: {}\n".format(station)
 
-@app.route('/npr/now/', methods=['POST'])
-def nprNow():
-    call(['mpc', 'add', npr_stream_uri])
+    call(['mpc', 'add', stations[station]])
     call(['mpc', 'play'])
-    return "stream NPR now.\n"
+    return "{} playing now.\n".format(station)
 
-@app.route('/logos/now/', methods=['POST'])
-def logosNow():
-    call(['mpc', 'add', logos_stream_uri])
-    call(['mpc', 'play'])
-    return "stream logos now.\n"
+@app.route('/stations/', methods=['GET'])
+def getStations():
+    stations_string = ", ".join(stations.keys())
+    return stations_string + "\n"
 
-@app.route('/relax/now/', methods=['POST'])
-def relaxNow():
-    call(['mpc', 'add', relax_stream_uri])
-    call(['mpc', 'play'])
-    return "stream relax now.\n"
-
-@app.route('/noise/now/', methods=['POST'])
-def noiseNow():
-    call(['mpc', 'add', noise_stream_uri])
-    call(['mpc', 'play'])
-    return "stream dance now.\n"
-
-@app.route('/classic/now/', methods=['POST'])
-def classicNow():
-    call(['mpc', 'add', classic_stream_uri])
-    call(['mpc', 'play'])
-    return "stream classic now.\n"
-
-@app.route('/nature/now/', methods=['POST'])
-def natureNow():
-    call(['mpc', 'add', nature_stream_uri])
-    call(['mpc', 'play'])
-    return "stream nature now.\n"
-
+###########
 # EOF
+###########

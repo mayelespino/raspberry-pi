@@ -11,15 +11,14 @@
       package: name=python-dev state=latest
     - name: install build-essential
       package: name=build-essential state=latest
-    - name: install omxplayer
-      package: name=omxplayer state=latest
     - name: install monit
       apt: name=monit state=latest
     - name: configure http port in monitrc
-      lineinfile: dest=/etc/monit/monitrc
-            regexp='# set httpd port 2812 and'
-            insertbefore='# set httpd port 2812 and'
-            line="set httpd port 2812 and\n  use address localhost\n  allow localhost"
+      copy: src=~/Repos/raspberry-pi/picron/etc/monitrc dest=/etc/monit
+            owner=root 
+            group=root 
+            mode=0777 
+            force=true
     - name: install pytz
       pip: name=pytz 
     - name: install flask

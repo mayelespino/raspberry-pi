@@ -1,0 +1,13 @@
+---
+- hosts: picron
+  remote_user: pi
+  sudo: yes
+  tasks:
+     - name: restart apache2
+       service: name=apache2 state=restarted
+     - name: restart monit
+       service: name=monit state=restarted
+     - name: stop picron app
+       command: /var/www/stopApp.sh
+     - name: start picron app
+       command: /var/www/startApp.sh

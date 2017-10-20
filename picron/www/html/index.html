@@ -4,7 +4,7 @@
 <script type="text/javascript">
 
 function getAlerts()
-  {
+{
     var responseText;
     alert("HI-2");
     var xhr = new XMLHttpRequest();
@@ -13,62 +13,59 @@ function getAlerts()
     alert(xhr.status);
     alert(xhr.statusText);
     alert("end");
-  }
- function timedMsg()
-  {
+}
+function timedMsg()
+{
     var t=setInterval("change_time();",1000);
-  }
- function change_time()
- {
-   var d = new Date();
-   var curr_hour = d.getHours();
-   var curr_min = d.getMinutes();
-   var curr_sec = d.getSeconds();
-   if(curr_hour > 12)
-     curr_hour = curr_hour - 12;
-   document.getElementById('Hour').innerHTML=curr_hour+':';
-   document.getElementById('Minut').innerHTML=curr_min+':';
-   document.getElementById('Second').innerHTML=curr_sec;
- }
+}
+function change_time()
+{
+    var d = new Date();
+    var curr_hour = d.getHours();
+    var curr_min = d.getMinutes();
+    var curr_sec = d.getSeconds();
+    if(curr_hour > 12)
+        curr_hour = curr_hour - 12;
+    document.getElementById('Hour').innerHTML=curr_hour+':';
+    document.getElementById('Minut').innerHTML=curr_min+':';
+    document.getElementById('Second').innerHTML=curr_sec;
+}
 timedMsg();   
 
 </script>
 </head>
 <body>
 <H1>PiCron Alarm clock</H1>
-
-<p>Current time is :</p>
-<p id="Hour"/><p id="Minut"/><p id="Second"/>
-
+<table>
+  <tr>
+    <td id="Hour" style="font-size:40px"></td><td id="Minut" style="font-size:40px"><td/><td id="Second" style="font-size:40px"><td/>
+  </tr>
+</table>
 <br/>
-<a href="http://picron.local:5000/">current time</a>
 <br>
-<a href="http://picron.local:5000/alarms/">alarms</a>
 <pre>
-    get current time:
-    curl -X GET http://picron.local:5000/
-    get list of all cron jobs
-    curl -X GET http://picron.local:5000/cron/
-    delete all cron jobs
-    curl -X DELETE http://picron.local:5000/cron
-    mute anythig playing right now
-    curl -X DELETE http://picron.local:5000/mute
-    set a wake up time
-    curl -X POST http://picron.local:5000/wakeup/daily/6:00
-    curl -X POST http://picron.local:5000/wakeup/weekday/6:00
-    curl -X POST http://picron.local:5000/wakeup/now/
-    set a sleep time:
-    curl -X POST http://picron.local:5000/sleep/daily/6:00
-    curl -X POST http://picron.local:5000/sleep/weekday/6:00
-    curl -X POST http://picron.local:5000/sleep/now/
-    mute:
-    curl -X POST http://picron.local:5000/mute
-    curl -X POST http://picron.local:5000/muteall/now/
-    steam:
-    curl -X POST http://picron.local:5000/stream/dance/now/
-    curl -X POST http://picron.local:5000/stream/sleep/now/
-    curl -X POST http://picron.local:5000/stream/npr/now/
-    curl -X POST http://picron.local:5000/stream/cristiana/now/
-    curl -X POST http://picron.local:5000/stream/news/now/
-</pre>
+<h3>get current time</h3>
+curl -X GET http://picron.local:5000/
+<a href="http://picron.local:5000/">http://picron.local:5000/</a>
+<h3>get list of all cron jobs</h3>
+curl -X GET http://picron.local:5000/cron/
+<a href="http://picron.local:5000/cron/"> href="http://picron.local:5000/cron/</a>
+<h3>delete all cron jobs</h3>
+curl -X DELETE http://picron.local:5000/cron/
+<h3>mute anythig playing right now</h3>
+curl -X DELETE http://picron.local:5000/mute
+<h3>set a wake up time</h3>
+curl -X POST http://picron.local:5000/wakeup/daily/6:00 <br/>
+curl -X POST http://picron.local:5000/wakeup/weekday/6:00 <br/>
+curl -X POST http://picron.local:5000/wakeup/now/ <br/>
+<h3>set a sleep time:</h3>
+curl -X POST http://picron.local:5000/sleep/daily/6:00<br/>
+curl -X POST http://picron.local:5000/sleep/weekday/6:00<br/>
+curl -X POST http://picron.local:5000/sleep/now/<br/>
+<h3>Play now:</h3>
+curl -X POST http://picron.local:5000/wakeup/now/<br/>
+curl -X POST http://picron.local:5000/sleep/now/<br/>
+curl -X POST http://picron.local:5000/npr/now/ <br/>
+curl -X POST http://picron.local:5000/logos/now/<br/>
+curl -X POST http://picron.local:5000/news/now/<br/>
 </HTML>

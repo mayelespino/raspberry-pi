@@ -1,24 +1,38 @@
 # curl commands
 ```
-curl -X POST http://localhost:5000/alarms/reload/
-curl -X GET http://localhost:5000/alarms/
-curl -X DELETE http://localhost:5000/alarms/
-curl -X POST http://localhost:5000/alarms/6:00/Mon-Fri
-curl -X GET http://localhost:5000/
-curl -X POST http://localhost:5000/alarms/9:00
-curl -X POST http://localhost:5000/alarms/playnow/
-```
-
-```
-curl -X POST http://picron.local:5000/alarms/reload/
-curl -X GET http://picron.local:5000/alarms/
-curl -X DELETE http://picron.local:5000/alarms/
-curl -X POST http://picron.local:5000/alarms/6:00/Mon-Fri
+get current time
 curl -X GET http://picron.local:5000/
-curl -X POST http://picron.local:5000/alarms/9:00
-curl -X POST http://picron.local:5000/alarms/playnow/
-```
+http://picron.local:5000/
 
+get list of all cron jobs
+curl -X GET http://picron.local:5000/cron/
+href="http://picron.local:5000/cron/
+
+delete all cron jobs
+curl -X DELETE http://picron.local:5000/cron/
+
+mute anythig playing right now
+curl -X DELETE http://picron.local:5000/mute
+
+set a wake up time
+curl -X POST http://picron.local:5000/wakeup/daily/6:00 
+curl -X POST http://picron.local:5000/wakeup/weekday/6:00 
+curl -X POST http://picron.local:5000/wakeup/now/ 
+
+set a sleep time:
+curl -X POST http://picron.local:5000/sleep/daily/6:00
+curl -X POST http://picron.local:5000/sleep/weekday/6:00
+curl -X POST http://picron.local:5000/sleep/now/
+
+play now:
+curl -X POST http://picron.local:5000/wakeup/now/
+curl -X POST http://picron.local:5000/sleep/now/
+curl -X POST http://picron.local:5000/npr/now/ 
+curl -X POST http://picron.local:5000/logos/now/
+curl -X POST http://picron.local:5000/news/now/
+
+
+```
 # Usefull links
 * http://raspberrypi.stackexchange.com/questions/38025/disable-console-autologin-on-raspbian-jessie
 * https://www.raspberrypi.org/forums/viewtopic.php?f=91&t=112702
