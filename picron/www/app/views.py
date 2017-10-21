@@ -3,6 +3,7 @@ import datetime
 from pytz import timezone
 from flask import request, session
 from subprocess import call
+from subprocess import check_output
 from crontab import CronTab
 #
 #
@@ -29,6 +30,7 @@ stations['npr'] = 'https://nis.stream.publicradio.org/nis.mp3'
 stations['logos'] = 'http://14223.live.streamtheworld.com:80/WFFHFM_SC'
 stations['classic'] = 'http://q2stream.wqxr.org/q2'
 stations['alt'] = 'http://stream2.mpegradio.com:8070/'
+stations['wake'] = 'http://q2stream.wqxr.org/q2'
 #
 # 
 #
@@ -67,7 +69,7 @@ def clearCron():
     return "Alarms cleared!\n"
 
 #
-# Volume and Mute
+# Volume 
 #
 @app.route('/volume/down/<number>/', methods=['POST'])
 def volumeDown(number):
@@ -79,10 +81,42 @@ def volumeUp(number):
     call(['mpc', 'volume', '+{}'.format(number)])
     return "volume up {}.\n".format(number)
 
+#
+# Mute
+#
 @app.route('/mute/', methods=['POST'])
 def mute():
     call(['mpc', 'clear'])
     return "mute now.\n"
+
+@app.route('/mute/<minutes>/minutes/', methods=['POST'])
+def muteIn(minutes):
+    call(['/var/www/muteAt.sh', minutes])
+    return "mute in {} minutes.\n".format(minutes)
+
+#
+# List stations and play a station now
+#
+@app.route('/play/<station>/now/', methods=['POST'])
+def stationNow(station):
+    if station not in stations:
+        return "Invalid selection: {}\n".format(station)
+
+    call(['mpc', 'add', stations[station]])
+    call(['mpc', 'play'])
+    return "{} playing now.\n".format(station)
+
+@app.route('/stations/', methods=['GET'])
+def getStations():
+    stations_string = ", ".join(stations.keys())
+    return stations_string + "\n"
+
+@app.route('/now/playing/', methods=['GET'])
+def nowPlaying():
+    status = check_output(["mpc", "current"])
+    if status == "":
+        status = "Nothing is playing now.\n"
+    return status 
 
 #
 # Sleep Cron
@@ -191,32 +225,15 @@ def muteWeekday(time):
 #
 @app.route('/sleep/now/', methods=['POST'])
 def sleepNow():
-    call(['mpc', 'add', sleep_stream_uri])
+    call(['mpc', 'add', stations['sleep'] ])
     call(['mpc', 'play'])
     return "stream sleep now.\n"
 
 @app.route('/wakeup/now/', methods=['POST'])
 def wakeupNow():
-    call(['mpc', 'add', relax_stream_uri])
+    call(['mpc', 'add', stations['sleep'] ])
     call(['mpc', 'play'])
     return "stream wakeup now.\n"
-
-#
-# Play now
-#
-@app.route('/play/<station>/now/', methods=['POST'])
-def stationNow(station):
-    if station not in stations:
-        return "Invalid selection: {}\n".format(station)
-
-    call(['mpc', 'add', stations[station]])
-    call(['mpc', 'play'])
-    return "{} playing now.\n".format(station)
-
-@app.route('/stations/', methods=['GET'])
-def getStations():
-    stations_string = ", ".join(stations.keys())
-    return stations_string + "\n"
 
 ###########
 # EOF

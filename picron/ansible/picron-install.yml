@@ -11,6 +11,8 @@
       package: name=python-dev state=latest
     - name: install build-essential
       package: name=build-essential state=latest
+    - name: install AT command
+      apt: name=at state=latest
     - name: install monit
       apt: name=monit state=latest
     - name: configure http port in monitrc
