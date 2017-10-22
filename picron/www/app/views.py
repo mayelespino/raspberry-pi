@@ -48,12 +48,46 @@ def index():
     timeString = '[{}/{}/{} {}:{} {}]\n'.format(now.day,now.month,now.year,hour,now.minute,ampm)
     return timeString
 
+@app.route('/help/', methods=['GET'])
+def help():
+    usage = """
+    <pre>
+    curl -X GET http://picron.local:5000/
+    curl -X POST http://picron.local:5000/
+    curl -X DELETE http://picron.local:5000/
+
+    GET / .- Returns current time
+    GET /cron/ .-  Returns current cron sttings.
+    GET /stations/ .- Returns available stations.
+    GET /now/playing/
+
+    DELETE /cron/ .- Deletes all cron jobs
+
+    POST /reboot/sync/ .- Add at boot time syncinstructions.
+    POST /volume/down/<number>/
+    POST /volume/up/<number>/
+    POST /mute/
+    POST /mute/<minutes>/minutes/
+    POST /play/<station>/now/
+    POST /sleep/daily/<time>/
+    POST /sleep/weekday/<time>/
+    POST /wakeup/daily/<time>/
+    POST /wakeup/weekday/<time>/
+    POST /mute/daily/<time>/
+    POST /mute/weekday/<time>/
+    POST /sleep/now/
+    POST /wakeup/now/
+    </pre>
+    """
+    return usage
+
 @app.route('/cron/', methods=['GET'])
-def doGet():
+def getCron():
     cron  = CronTab(user=True)
-    returnString = ""
+    cronString = "\n"
     for line in cron.lines:
-        returnString = '%s%s\n' % (returnString, line)
+        cronString  = '%s%s\n' % (cronString, line)
+    returnString = "<pre>{}</pre>".format(cronString)
     return returnString
 
 @app.route('/cron/', methods=['DELETE'])
@@ -62,10 +96,15 @@ def clearCron():
     cron_job = cron.clear()
     cron_job.enable()
     cron.write()
-    ntp_cron = cron.new(command='/usr/sbin/service ntp restart',comment='Make sure the time is in sync.',user=True)
-    ntp_cron.every_reboot()
-    ntp_cron.enable()
-    ntp_cron.write()
+
+
+@app.route('/cron/at/boot/', methods=['POST'])
+def atBootCron():
+    cron  = CronTab(user=True)
+    cron_job = cron.new(command='/usr/sbin/service ntp restart',comment='Make sure the time is in sync.',user=True)
+    cron_job.every_reboot()
+    cron_job.enable()
+    cron.write()
     return "Alarms cleared!\n"
 
 #
@@ -204,7 +243,7 @@ def muteDaily(time):
     cron.write()
     return "mute daily at ["+time+"] added.\n"
 
-@app.route('/wakeup/weekday/<time>/', methods=['POST'])
+@app.route('/mute/weekday/<time>/', methods=['POST'])
 def muteWeekday(time):
     if ':' in time:
         (hour, minute) = time.split(":")

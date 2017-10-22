@@ -1,19 +1,10 @@
 <HTML>
 
 <head>
+<meta http-equiv="refresh" content="10"/>
+
 <script type="text/javascript">
 
-function getAlerts()
-{
-    var responseText;
-    alert("HI-2");
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://pil00.local:5000/alarms/", false);
-    xhr.send();
-    alert(xhr.status);
-    alert(xhr.statusText);
-    alert("end");
-}
 function timedMsg()
 {
     var t=setInterval("change_time();",1000);
@@ -34,7 +25,8 @@ timedMsg();
 
 </script>
 </head>
-<body>
+
+<body bgcolor="LightSteelBlue">
 <H1>PiCron Alarm clock</H1>
 <table>
   <tr>
@@ -43,29 +35,21 @@ timedMsg();
 </table>
 <br/>
 <br>
-<pre>
-<h3>get current time</h3>
-curl -X GET http://picron.local:5000/
-<a href="http://picron.local:5000/">http://picron.local:5000/</a>
-<h3>get list of all cron jobs</h3>
-curl -X GET http://picron.local:5000/cron/
-<a href="http://picron.local:5000/cron/"> href="http://picron.local:5000/cron/</a>
-<h3>delete all cron jobs</h3>
-curl -X DELETE http://picron.local:5000/cron/
-<h3>mute anythig playing right now</h3>
-curl -X DELETE http://picron.local:5000/mute
-<h3>set a wake up time</h3>
-curl -X POST http://picron.local:5000/wakeup/daily/6:00 <br/>
-curl -X POST http://picron.local:5000/wakeup/weekday/6:00 <br/>
-curl -X POST http://picron.local:5000/wakeup/now/ <br/>
-<h3>set a sleep time:</h3>
-curl -X POST http://picron.local:5000/sleep/daily/6:00<br/>
-curl -X POST http://picron.local:5000/sleep/weekday/6:00<br/>
-curl -X POST http://picron.local:5000/sleep/now/<br/>
-<h3>Play now:</h3>
-curl -X POST http://picron.local:5000/wakeup/now/<br/>
-curl -X POST http://picron.local:5000/sleep/now/<br/>
-curl -X POST http://picron.local:5000/npr/now/ <br/>
-curl -X POST http://picron.local:5000/logos/now/<br/>
-curl -X POST http://picron.local:5000/news/now/<br/>
+
+<H2>Help<H2>
+<iframe src="http://picron.local:5000/help/" title="help" width="600" height="500" style="background-color: LightGray;">
+</iframe>
+
+<H2>Currently playing</H2>
+<iframe src="http://picron.local:5000/now/playing/" title="now playing" width="600" height="30" style="background-color: LightGray;">
+</iframe>
+
+<H2>Current Cron</H2>
+<iframe src="http://picron.local:5000/cron/" title="current cron" width="600" height="200" style="background-color: LightGray;">
+</iframe>
+
+<H2>Current Time according to App</H2>
+<iframe src="http://picron.local:5000/" title="current cron" width="600" height="30" style="background-color: LightGray;">
+</iframe>
+
 </HTML>
