@@ -1,5 +1,5 @@
 # picron
-[picron index]: https://github.com/mayelespino/raspberry-pi/blob/master/picron/picron-html.png
+[picron index]: https://github.com/mayelespino/raspberry-pi/blob/master/picron/picron-html.png "logo"
 
 # curl commands
 ```
