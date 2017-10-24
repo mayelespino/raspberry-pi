@@ -1,43 +1,11 @@
 <HTML>
 
-<head>
+<HEAD>
 <meta http-equiv="refresh" content="10"/>
-
-<script type="text/javascript">
-
-function timedMsg()
-{
-    var t=setInterval("change_time();",1000);
-}
-function change_time()
-{
-    var d = new Date();
-    var curr_hour = d.getHours();
-    var curr_min = d.getMinutes();
-    var curr_sec = d.getSeconds();
-    if(curr_hour > 12)
-        curr_hour = curr_hour - 12;
-    document.getElementById('Hour').innerHTML=curr_hour+':';
-    document.getElementById('Minut').innerHTML=curr_min+':';
-    document.getElementById('Second').innerHTML=curr_sec;
-}
-timedMsg();   
-
-</script>
-</head>
-
-<body bgcolor="LightSteelBlue">
-<H1>PiCron Alarm clock</H1>
-<table>
-  <tr>
-    <td id="Hour" style="font-size:40px"></td><td id="Minut" style="font-size:40px"><td/><td id="Second" style="font-size:40px"><td/>
-  </tr>
-</table>
-<br/>
-<br>
-
-<H2>Help<H2>
-<iframe src="http://picron.local:5000/help/" title="help" width="600" height="500" style="background-color: LightGray;">
+</HEAD>
+<BODY bgcolor="LightSteelBlue">
+<H2>Current Time according to App</H2>
+<iframe src="http://picron.local:5000/" title="current time" width="600" height="30" style="background-color: LightGray;">
 </iframe>
 
 <H2>Currently playing</H2>
@@ -48,8 +16,13 @@ timedMsg();
 <iframe src="http://picron.local:5000/cron/" title="current cron" width="600" height="200" style="background-color: LightGray;">
 </iframe>
 
-<H2>Current Time according to App</H2>
-<iframe src="http://picron.local:5000/" title="current cron" width="600" height="30" style="background-color: LightGray;">
+<H2>Available stations</H2>
+<iframe src="http://picron.local:5000/stations/" title="stations" width="600" height="30" style="background-color: LightGray;">
 </iframe>
 
+<H2>Help<H2>
+<iframe src="http://picron.local:5000/help/" title="help" width="600" height="500" style="background-color: LightGray;">
+</iframe>
+
+</BODY>
 </HTML>
