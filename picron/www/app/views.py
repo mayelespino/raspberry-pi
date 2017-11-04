@@ -8,29 +8,19 @@ from crontab import CronTab
 #
 #
 #
-#sleep_stream_uri = 'http://mp3channels.webradio.antenne.de/chillout'
-#sleep_stream_uri = 'http://sl128.hnux.com'
-#sleep_stream_uri = 'http://radio.stereoscenic.com/asp-s'
-#relax_stream_uri = 'http://radio.nolife-radio.com:9000/stream'
-#dance_stream_uri = 'http://stream.dancewave.online:8080/dance.mp3'
-#dance_stream_uri = 'http://pulseedm.cdnstream1.com:8124/1373_128'
-#npr_stream_uri = 'https://nis.stream.publicradio.org/nis.mp3'
-#logos_stream_uri = 'http://188.165.240.90:8193'
-#logos_stream_uri = 'http://14223.live.streamtheworld.com:80/WFFHFM_SC'
-#clasic_stream_uri = 'http://cms.stream.publicradio.org/cms.mp3'
-#clasic_stream_uri = 'http://q2stream.wqxr.org/q2'
-#nature_stream_uri = ''
-#alt_stream_uri = 'http://stream2.mpegradio.com:8070/'
-#dj_stram_uri='http://151.80.108.126:9530'
 stations = {}
-stations['sleep'] = 'http://radio.stereoscenic.com/asp-s'
-stations['relax'] = 'http://radio.nolife-radio.com:9000/stream'
+stations['sleep'] = 'http://66.55.145.43:7051/'
+stations['nature'] = 'http://66.55.145.43:7051/'
+stations['relax'] = 'http://uk5.internet-radio.com:8075/'
+stations['chill'] = 'http://radio.stereoscenic.com/asp-s'
 stations['dance'] = 'http://pulseedm.cdnstream1.com:8124/1373_128'
 stations['npr'] = 'https://nis.stream.publicradio.org/nis.mp3'
 stations['logos'] = 'http://14223.live.streamtheworld.com:80/WFFHFM_SC'
 stations['classic'] = 'http://q2stream.wqxr.org/q2'
 stations['alt'] = 'http://stream2.mpegradio.com:8070/'
-stations['wake'] = 'http://q2stream.wqxr.org/q2'
+stations['wake'] = 'http://198.105.218.124:8200/'
+stations['house'] = 'http://uk3.internet-radio.com:8435/'
+stations['instrumental'] = 'http://198.105.218.124:8200/'
 #
 # 
 #

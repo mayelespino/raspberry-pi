@@ -45,4 +45,6 @@
       apt: name=mpd update_cache=yes state=latest
     - name: install mpc
       apt: name=mpc update_cache=yes state=latest
+    - name: install pyttsx 
+      pip: name=pyttsx 
 

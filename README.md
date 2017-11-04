@@ -49,3 +49,6 @@ This is a set of programs working on a pi which :
 ## Misc.
 - http://elinux.org/RPi_Resize_Flash_Partitions
 - https://www.youtube.com/watch?v=R4VovMDnsIE
+
+## Text to speach
+- http://pyttsx.readthedocs.io/en/latest/engine.html
