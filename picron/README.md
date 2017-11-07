@@ -125,3 +125,8 @@ sudo rm /etc/timezone
 echo "US/Pacific" | sudo tee /etc/timezone 
 ```
 
+# To do
+- restart and get status for support services:
+    - mpd
+    - monit
+- Reminders. Using text to speach. Have a rest api call to add reminders at a certain time and/or red off reminders from web page.

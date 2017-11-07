@@ -1,7 +1,9 @@
 # Notes on Pi-Gatway
-The pig (pie gateway) has:
-- an email client
-- zookeeper
+The pigate unit has the following roles:
+- Connect to the inertnet of things to get and send messages for the rest of the pies at home.
+- Send messages or interact with the other pies.
+- Chaperon. This application checks to see when I am home and keeps track of me. Checks with me if not on schedule.
+- tweets status, reminders and other information to it's tweeter account.
 
 
 ## links
