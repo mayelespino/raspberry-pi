@@ -5,6 +5,9 @@ from flask import request, session
 from subprocess import call
 from subprocess import check_output
 from crontab import CronTab
+import pyttsx
+from datetime import datetime
+
 #
 #
 #
@@ -264,6 +267,29 @@ def wakeupNow():
     call(['mpc', 'play'])
     return "stream wakeup now.\n"
 
+#
+# Say
+#
+@app.route('/say/time/now/', methods=['POST'])
+def sayTimeNow():
+    engine = pyttsx.init()
+    engine.setProperty('rate', 55)
+    time_now = datetime.now().strftime('%I:%M')
+    time_text = "The time now is ..."
+    engine.say(time_text)
+    engine.say(time_now)
+    engine.say("..")
+    engine.say(time_now)
+    engine.runAndWait()
+    return "Say time now.\n"
+
+@app.route('/say/<this_string>/', methods=['POST'])
+def sayTimeNow(this_string):
+    engine = pyttsx.init()
+    engine.setProperty('rate', 55)
+    engine.say(this_string)
+    engine.runAndWait()
+    return "Say time now.\n"
 ###########
 # EOF
 ###########
