@@ -1,0 +1,10 @@
+---
+- hosts: all
+  remote_user: pi
+  sudo: no
+  tasks:
+    - name: crontab for chaperon
+      cron:
+        name: 'Chaperon'
+        minute: '*/5'
+        job: '/usr/bin/python /home/pi/Scripts/chaperon.py'

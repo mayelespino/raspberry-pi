@@ -6,7 +6,6 @@ from subprocess import call
 from subprocess import check_output
 from crontab import CronTab
 import pyttsx
-from datetime import datetime
 
 #
 #
@@ -28,7 +27,6 @@ stations['instrumental'] = 'http://198.105.218.124:8200/'
 # 
 #
 @app.route('/')
-@app.route('/index')
 def index():
     now = datetime.datetime.now(timezone('US/Pacific'))
     hour24 = now.hour
@@ -274,7 +272,7 @@ def wakeupNow():
 def sayTimeNow():
     engine = pyttsx.init()
     engine.setProperty('rate', 55)
-    time_now = datetime.now().strftime('%I:%M')
+    time_now = datetime.datetime.now().strftime('%I:%M')
     time_text = "The time now is ..."
     engine.say(time_text)
     engine.say(time_now)
@@ -284,7 +282,7 @@ def sayTimeNow():
     return "Say time now.\n"
 
 @app.route('/say/<this_string>/', methods=['POST'])
-def sayTimeNow(this_string):
+def sayThisString(this_string):
     engine = pyttsx.init()
     engine.setProperty('rate', 55)
     engine.say(this_string)

@@ -1,0 +1,13 @@
+---
+- hosts: all
+  remote_user: pi
+  sudo: yes
+  tasks:
+    - name: sync www folder
+      synchronize: src=~/Repos/raspberry-pi/loop/Scripts dest=/home/pi
+    - name: set mode and owner
+      file: 
+        path: /home/pi
+        owner: pi
+        group: pi
+        recurse: yes
