@@ -13,3 +13,8 @@
 - https://github.com/ewenchou/bluetooth-proximity
 ## Proximity detection
 - https://supertechnologyknowledgequest.blogspot.com/2017/01/device-proximity-detection.html
+## In memory DB - Redis
+- https://www.tutorialspoint.com/redis/index.htm
+- https://github.com/cjus/hydra-cluster/wiki/Redis-on-a-Raspberry-Pi
+- https://pypi.python.org/pypi/redis
+- http://www.bogotobogo.com/python/python_redis_with_python.php

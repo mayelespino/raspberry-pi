@@ -8,3 +8,8 @@
         name: 'Chaperon'
         minute: '*/5'
         job: '/usr/bin/python /home/pi/Scripts/chaperon.py'
+    - name: crontab for pitwitter
+      cron:
+        name: 'pitwitter'
+        minute: '0'
+        job: '/usr/bin/python /home/pi/Scripts/pitwitter.py'

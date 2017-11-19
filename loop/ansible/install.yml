@@ -19,3 +19,9 @@
       package: name=obexpushd update_cache=yes state=latest
     - name: install raspberrypi-sys-mods
       package: name=raspberrypi-sys-mods update_cache=yes state=latest
+    - name: install redis-server
+      package: name=redis-server update_cache=yes state=latest
+    - name: install python redis
+      pip: name=redis
+    - name: install tweepy 
+      pip: name=tweepy
