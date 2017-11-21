@@ -10,12 +10,6 @@
         - python-dev
         - build-essential
         - redis-server
-        - bluez
-        - python-bluez
-        - pi-bluetooth
-        - obexpushd
-        - raspberrypi-sys-mods
-        - redis-server
     - name: Pip install various
       pip: name={{ item }} 
       with_items:
