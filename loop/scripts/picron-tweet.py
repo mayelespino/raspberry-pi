@@ -18,7 +18,7 @@ response = requests.get('http://picron.local:5000/')
 status_message += "Current time: {}".format(response.text)
 
 chaperon_lock = r.get('chaperon_lock')
-status_message += "\n There: {}".format(chaperon_lock)
+status_message += "There: {}".format(chaperon_lock)
 
 response = requests.get('http://picron.local:5000/now/playing/')
 status_message += "\n Now playing: {}".format(response.text)

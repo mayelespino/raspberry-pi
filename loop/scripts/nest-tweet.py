@@ -9,7 +9,6 @@ redb = redis.StrictRedis(host='localhost', port=6379, db=0)
 
 client_id = redb.get('nest_client_id')
 client_secret = redb.get('nest_client_secret')
-pin = redb.get('nest_pin')
 access_token_cache_file = 'nest.json'
 
 
@@ -19,6 +18,12 @@ access_token_cache_file = 'nest.json'
 napi = nest.Nest(client_id=client_id, client_secret=client_secret, access_token_cache_file=access_token_cache_file)
 
 if napi.authorization_required:
+    #print('Go to ' + napi.authorize_url + ' to authorize, then enter PIN below')
+    #if sys.version_info[0] < 3:
+    #    pin = raw_input("PIN: ")
+    #else:
+    #    pin = input("PIN: ")
+    pin = redb.get('nest_pin')
     napi.request_token(pin)
 
 ts = time.time()
@@ -42,7 +47,7 @@ for structure in napi.structures:
         nest_status += ('online                : %s\n' % device.online)
 
 #redb.set('nest_status',nest_status)
-
+#
 #
 # Tweet
 #

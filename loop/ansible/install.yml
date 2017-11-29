@@ -23,6 +23,7 @@
         - requests
         - redis
         - tweepy
+        - python-nest
     - name: configure bind in redis.conf
       lineinfile: 
         dest: /etc/redis/redis.conf
