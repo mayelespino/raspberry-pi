@@ -4,7 +4,7 @@
   sudo: yes
   tasks:
     - name: sync www folder
-      synchronize: src=~/Repos/raspberry-pi/loop/Scripts dest=/home/pi
+      synchronize: src=~/Repos/raspberry-pi/loop/scripts dest=/home/pi
     - name: set mode and owner
       file: 
         path: /home/pi

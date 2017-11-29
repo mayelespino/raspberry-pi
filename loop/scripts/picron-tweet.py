@@ -10,7 +10,7 @@ access_token_secret = r.get('twitter_access_token_secret')
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
-api = tweepy.API(auth)
+tapi = tweepy.API(auth)
 
 status_message = ""
 
@@ -18,9 +18,9 @@ response = requests.get('http://picron.local:5000/')
 status_message += "Current time: {}".format(response.text)
 
 chaperon_lock = r.get('chaperon_lock')
-status_message += "There: {}".format(chaperon_lock)
+status_message += "\n There: {}".format(chaperon_lock)
 
 response = requests.get('http://picron.local:5000/now/playing/')
-status_message += "Now playing: {}".format(response.text)
+status_message += "\n Now playing: {}".format(response.text)
 
-api.update_status(status_message)
+tapi.update_status(status_message)

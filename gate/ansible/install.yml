@@ -17,3 +17,13 @@
         - requests
         - redis
         - tweepy
+    - name: Update bashrc for PythonBrew for foo user
+      lineinfile:
+        dest= /etc/redis/redis.conf
+        backup=yes
+        line="slaveof 10.0.1.41 6379"
+        regexp='^'
+        state=present
+        insertafter=EOF
+        create=True
+

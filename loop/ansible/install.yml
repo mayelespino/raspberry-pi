@@ -23,3 +23,19 @@
         - requests
         - redis
         - tweepy
+    - name: configure bind in redis.conf
+      lineinfile: 
+        dest: /etc/redis/redis.conf
+        regexp: '^(.*)bind 127.0.0.1(.*)$' 
+        line: 'bind 0.0.0.0'
+        backrefs: yes
+    - name: Configure sysctl.conf
+      lineinfile:
+        dest=/etc/sysctl.conf
+        backup=yes
+        line='vm.overcommit_memory = 1'
+        regexp='^'
+        state=present
+        insertafter=EOF
+        create=True
+

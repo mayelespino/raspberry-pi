@@ -1,5 +1,5 @@
 # Home APIs
 
 # Links
-- https://developers.nest.com/documentation/cloud/sample-code-auth
-- https://pypi.python.org/pypi/python-nest
+- https://pypi.python.org/pypi/python-nest/2.3.1
+- https://pypi.org/project/python-nest/

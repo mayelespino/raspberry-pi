@@ -3,13 +3,20 @@
   remote_user: pi
   sudo: no
   tasks:
+    - name  : remove user's crontab
+      shell : crontab -r
     - name: crontab for chaperon
       cron:
-        name: 'Chaperon'
+        name: 'chaperon'
         minute: '*/5'
-        job: '/usr/bin/python /home/pi/Scripts/chaperon.py'
-    - name: crontab for pitwitter
+        job: '/usr/bin/python /home/pi/scripts/chaperon.py'
+    - name: crontab for picron-tweet
       cron:
-        name: 'pitwitter'
-        minute: '0'
-        job: '/usr/bin/python /home/pi/Scripts/pitwitter.py'
+        name: 'picron-tweet'
+        hour: '*/2'
+        job: '/usr/bin/python /home/pi/scripts/picron-tweet.py'
+    - name: crontab for nest-tweet
+      cron:
+        name: 'nest-tweet'
+        hour: '*/2'
+        job: '/usr/bin/python /home/pi/scripts/nest-tweet.py'
