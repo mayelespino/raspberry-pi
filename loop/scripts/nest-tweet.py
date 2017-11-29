@@ -1,5 +1,5 @@
 import nest
-#import sys
+import time
 import tweepy
 import redis
 #
@@ -21,7 +21,8 @@ napi = nest.Nest(client_id=client_id, client_secret=client_secret, access_token_
 if napi.authorization_required:
     napi.request_token(pin)
 
-nest_status = ""
+ts = time.time()
+nest_status = "{}\n".format(ts)
 # Access advanced structure properties:
 for structure in napi.structures:
 # Access advanced device properties:
@@ -40,7 +41,7 @@ for structure in napi.structures:
         nest_status += ('hvac_emer_heat_state  : %s\n' % device.is_using_emergency_heat)
         nest_status += ('online                : %s\n' % device.online)
 
-redb.set('nest_status',nest_status)
+#redb.set('nest_status',nest_status)
 
 #
 # Tweet
@@ -53,5 +54,4 @@ access_token_secret = redb.get('twitter_access_token_secret')
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 tapi = tweepy.API(auth)
-
 tapi.update_status(nest_status)
