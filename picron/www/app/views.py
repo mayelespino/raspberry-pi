@@ -11,18 +11,25 @@ import pyttsx
 #
 #
 stations = {}
-stations['sleep'] = 'http://66.55.145.43:7051/'
 stations['nature'] = 'http://66.55.145.43:7051/'
-stations['relax'] = 'http://uk5.internet-radio.com:8075/'
-stations['chill'] = 'http://radio.stereoscenic.com/asp-s'
-stations['dance'] = 'http://pulseedm.cdnstream1.com:8124/1373_128'
+stations['chill01'] = 'http://uk2.internet-radio.com:31491/'
+stations['chill02'] = 'http://radio.stereoscenic.com/asp-s'
+stations['chill03'] = 'http://198.105.218.124:8200/'
+stations['chill04'] = 'http://q2stream.wqxr.org/q2'
 stations['npr'] = 'https://nis.stream.publicradio.org/nis.mp3'
-stations['logos'] = 'http://14223.live.streamtheworld.com:80/WFFHFM_SC'
-stations['classic'] = 'http://q2stream.wqxr.org/q2'
+stations['logos01'] = 'http://14223.live.streamtheworld.com:80/WFFHFM_SC'
+stations['logos02'] = 'http://18543.live.streamtheworld.com/FAMILYRADIO_WESTAAC_SC'
+stations['logos03'] = 'http://ic2.christiannetcast.com/kver-fm'
 stations['alt'] = 'http://stream2.mpegradio.com:8070/'
-stations['wake'] = 'http://198.105.218.124:8200/'
-stations['house'] = 'http://uk3.internet-radio.com:8435/'
-stations['instrumental'] = 'http://198.105.218.124:8200/'
+stations['dance01'] = 'http://pulseedm.cdnstream1.com:8124/1373_128'
+stations['dance02'] = 'http://uk7.internet-radio.com:8000/'
+stations['esp01'] = 'http://20283.live.streamtheworld.com/XEQR_FMAAC.aac'
+stations['edu01'] = 'http://netcast.kfjc.org/kfjc-192k-aac'
+stations['edu02'] = 'https://icecastle.csumb.edu/live128'
+stations['talk01'] = 'http://184.105.148.154:8000/live/'
+stations['talk02'] = 'http://provisioning.streamtheworld.com/pls/KCBSAM.pls'
+stations['wake'] = stations['dance02']
+stations['sleep'] = stations['chill04']
 #
 # 
 #
@@ -43,31 +50,52 @@ def index():
 def help():
     usage = """
     <pre>
-    curl -X GET http://picron.local:5000/
-    curl -X POST http://picron.local:5000/
-    curl -X DELETE http://picron.local:5000/
-
-    GET / .- Returns current time
-    GET /cron/ .-  Returns current cron sttings.
-    GET /stations/ .- Returns available stations.
-    GET /now/playing/
-
-    DELETE /cron/ .- Deletes all cron jobs
-
-    POST /reboot/sync/ .- Add at boot time syncinstructions.
-    POST /volume/down/<number>/
-    POST /volume/up/<number>/
-    POST /mute/
-    POST /mute/<minutes>/minutes/
-    POST /play/<station>/now/
-    POST /sleep/daily/<time>/
-    POST /sleep/weekday/<time>/
-    POST /wakeup/daily/<time>/
-    POST /wakeup/weekday/<time>/
-    POST /mute/daily/<time>/
-    POST /mute/weekday/<time>/
-    POST /sleep/now/
-    POST /wakeup/now/
+@app.route('/')
+@app.route('/help/', methods=['GET'])
+@app.route('/cron/', methods=['GET'])
+@app.route('/cron/', methods=['DELETE'])
+@app.route('/cron/at/boot/', methods=['POST'])
+@app.route('/volume/down/<number>/', methods=['POST'])
+@app.route('/volume/up/<number>/', methods=['POST'])
+@app.route('/mute/', methods=['POST'])
+@app.route('/mute/<minutes>/minutes/', methods=['POST'])
+@app.route('/play/<station>/', methods=['POST'])
+@app.route('/stations/', methods=['GET'])
+@app.route('/nowplaying/', methods=['GET'])
+@app.route('/sleep/daily/<time>/', methods=['POST'])
+@app.route('/sleep/wd/<time>/', methods=['POST'])
+@app.route('/wakeup/daily/<time>/', methods=['POST'])
+@app.route('/wakeup/wd/<time>/', methods=['POST'])
+@app.route('/mute/daily/<time>/', methods=['POST'])
+@app.route('/mute/we/<time>/', methods=['POST'])
+@app.route('/mute/wd/<time>/', methods=['POST'])
+@app.route('/sleep/', methods=['POST'])
+@app.route('/wakeup/', methods=['POST'])
+@app.route('/say/time/', methods=['POST'])
+@app.route('/say/<this_string>/', methods=['POST'])
+@app.route('/cron/', methods=['GET'])
+@app.route('/cron/', methods=['DELETE'])
+@app.route('/cron/at/boot/', methods=['POST'])
+@app.route('/volume/down/<number>/', methods=['POST'])
+@app.route('/volume/up/<number>/', methods=['POST'])
+@app.route('/mute/', methods=['POST'])
+@app.route('/mute/<minutes>/minutes/', methods=['POST'])
+@app.route('/play/<station>/', methods=['POST'])
+@app.route('/stations/', methods=['GET'])
+@app.route('/nowplaying/', methods=['GET'])
+@app.route('/sleep/daily/<time>/', methods=['POST'])
+@app.route('/sleep/we/<time>/', methods=['POST'])
+@app.route('/sleep/wd/<time>/', methods=['POST'])
+@app.route('/wakeup/daily/<time>/', methods=['POST'])
+@app.route('/wakeup/we/<time>/', methods=['POST'])
+@app.route('/wakeup/wd/<time>/', methods=['POST'])
+@app.route('/mute/daily/<time>/', methods=['POST'])
+@app.route('/mute/we/<time>/', methods=['POST'])
+@app.route('/mute/wd/<time>/', methods=['POST'])
+@app.route('/sleep/', methods=['POST'])
+@app.route('/wakeup/', methods=['POST'])
+@app.route('/say/time/', methods=['POST'])
+@app.route('/say/<this_string>/', methods=['POST'])
     </pre>
     """
     return usage
@@ -117,7 +145,7 @@ def volumeUp(number):
 @app.route('/mute/', methods=['POST'])
 def mute():
     call(['mpc', 'clear'])
-    return "mute now.\n"
+    return "mute\n"
 
 @app.route('/mute/<minutes>/minutes/', methods=['POST'])
 def muteIn(minutes):
@@ -127,11 +155,12 @@ def muteIn(minutes):
 #
 # List stations and play a station now
 #
-@app.route('/play/<station>/now/', methods=['POST'])
+@app.route('/play/<station>/', methods=['POST'])
 def stationNow(station):
     if station not in stations:
         return "Invalid selection: {}\n".format(station)
 
+    call(['mpc', 'clear'])
     call(['mpc', 'add', stations[station]])
     call(['mpc', 'play'])
     return "{} playing now.\n".format(station)
@@ -141,7 +170,7 @@ def getStations():
     stations_string = ", ".join(stations.keys())
     return stations_string + "\n"
 
-@app.route('/now/playing/', methods=['GET'])
+@app.route('/nowplaying/', methods=['GET'])
 def nowPlaying():
     status = check_output(["mpc", "current"])
     if status == "":
@@ -159,14 +188,30 @@ def sleepDaily(time):
         hour = time
         minute = "00"
     cron  = CronTab(user=True)
-    cron_job = cron.new(command='/usr/bin/curl -X POST http://localhost:5000/sleep/now/')
+    cron_job = cron.new(command='/usr/bin/curl -X POST http://localhost:5000/sleep/')
     cron_job.hour.on(hour)
     cron_job.minute.on(minute)
     cron_job.enable()
     cron.write()
     return "sleep daily at ["+time+"] added.\n"
 
-@app.route('/sleep/weekday/<time>/', methods=['POST'])
+@app.route('/sleep/we/<time>/', methods=['POST'])
+def sleepWeekend(time):
+    if ':' in time:
+        (hour, minute) = time.split(":")
+    else:
+        hour = time
+        minute = "00"
+    cron  = CronTab(user=True)
+    cron_job = cron.new(command='/usr/bin/curl -X POST http://localhost:5000/sleep/')
+    cron_job.dow.on(0,6)
+    cron_job.hour.on(hour)
+    cron_job.minute.on(minute)
+    cron_job.enable()
+    cron.write()
+    return "sleep weekday at ["+time+"] added.\n"
+
+@app.route('/sleep/wd/<time>/', methods=['POST'])
 def sleepWeekday(time):
     if ':' in time:
         (hour, minute) = time.split(":")
@@ -174,7 +219,7 @@ def sleepWeekday(time):
         hour = time
         minute = "00"
     cron  = CronTab(user=True)
-    cron_job = cron.new(command='/usr/bin/curl -X POST http://localhost:5000/sleep/now/')
+    cron_job = cron.new(command='/usr/bin/curl -X POST http://localhost:5000/sleep/')
     cron_job.dow.on(1,2,3,4,5)
     cron_job.hour.on(hour)
     cron_job.minute.on(minute)
@@ -193,14 +238,30 @@ def wakeupDaily(time):
         hour = time
         minute = "00"
     cron  = CronTab(user=True)
-    cron_job = cron.new(command='/usr/bin/curl -X POST http://localhost:5000/wakeup/now/')
+    cron_job = cron.new(command='/usr/bin/curl -X POST http://localhost:5000/wakeup/')
     cron_job.hour.on(hour)
     cron_job.minute.on(minute)
     cron_job.enable()
     cron.write()
     return "wakeup daily at ["+time+"] added.\n"
 
-@app.route('/wakeup/weekday/<time>/', methods=['POST'])
+@app.route('/wakeup/we/<time>/', methods=['POST'])
+def wakeupWeekend(time):
+    if ':' in time:
+        (hour, minute) = time.split(":")
+    else:
+        hour = time
+        minute = "00"
+    cron  = CronTab(user=True)
+    cron_job = cron.new(command='/usr/bin/curl -X POST http://localhost:5000/wakeup/')
+    cron_job.dow.on(0,6)
+    cron_job.hour.on(hour)
+    cron_job.minute.on(minute)
+    cron_job.enable()
+    cron.write()
+    return "wakeup weekdays at ["+time+"] added.\n"
+
+@app.route('/wakeup/wd/<time>/', methods=['POST'])
 def wakeupWeekday(time):
     if ':' in time:
         (hour, minute) = time.split(":")
@@ -208,7 +269,7 @@ def wakeupWeekday(time):
         hour = time
         minute = "00"
     cron  = CronTab(user=True)
-    cron_job = cron.new(command='/usr/bin/curl -X POST http://localhost:5000/wakeup/now/')
+    cron_job = cron.new(command='/usr/bin/curl -X POST http://localhost:5000/wakeup/')
     cron_job.dow.on(1,2,3,4,5)
     cron_job.hour.on(hour)
     cron_job.minute.on(minute)
@@ -234,7 +295,23 @@ def muteDaily(time):
     cron.write()
     return "mute daily at ["+time+"] added.\n"
 
-@app.route('/mute/weekday/<time>/', methods=['POST'])
+@app.route('/mute/we/<time>/', methods=['POST'])
+def muteWeekend(time):
+    if ':' in time:
+        (hour, minute) = time.split(":")
+    else:
+        hour = time
+        minute = "00"
+    cron  = CronTab(user=True)
+    cron_job = cron.new(command='/usr/bin/curl -X POST http://localhost:5000/wakeup/')
+    cron_job.dow.on(0,6)
+    cron_job.hour.on(hour)
+    cron_job.minute.on(minute)
+    cron_job.enable()
+    cron.write()
+    return "mute weekend at ["+time+"] added.\n"
+
+@app.route('/mute/wd/<time>/', methods=['POST'])
 def muteWeekday(time):
     if ':' in time:
         (hour, minute) = time.split(":")
@@ -242,7 +319,7 @@ def muteWeekday(time):
         hour = time
         minute = "00"
     cron  = CronTab(user=True)
-    cron_job = cron.new(command='/usr/bin/curl -X POST http://localhost:5000/wakeup/now/')
+    cron_job = cron.new(command='/usr/bin/curl -X POST http://localhost:5000/wakeup/')
     cron_job.dow.on(1,2,3,4,5)
     cron_job.hour.on(hour)
     cron_job.minute.on(minute)
@@ -253,13 +330,13 @@ def muteWeekday(time):
 #
 # Sleep and Wake up 
 #
-@app.route('/sleep/now/', methods=['POST'])
+@app.route('/sleep/', methods=['POST'])
 def sleepNow():
     call(['mpc', 'add', stations['sleep'] ])
     call(['mpc', 'play'])
     return "stream sleep now.\n"
 
-@app.route('/wakeup/now/', methods=['POST'])
+@app.route('/wakeup/', methods=['POST'])
 def wakeupNow():
     call(['mpc', 'add', stations['sleep'] ])
     call(['mpc', 'play'])
@@ -268,7 +345,7 @@ def wakeupNow():
 #
 # Say
 #
-@app.route('/say/time/now/', methods=['POST'])
+@app.route('/say/time/', methods=['POST'])
 def sayTimeNow():
     engine = pyttsx.init()
     engine.setProperty('rate', 55)
@@ -287,7 +364,7 @@ def sayThisString(this_string):
     engine.setProperty('rate', 55)
     engine.say(this_string)
     engine.runAndWait()
-    return "Say time now.\n"
+    return "Say string.\n"
 ###########
 # EOF
 ###########
