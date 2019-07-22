@@ -72,30 +72,7 @@ def help():
 @app.route('/sleep/', methods=['POST'])
 @app.route('/wakeup/', methods=['POST'])
 @app.route('/say/time/', methods=['POST'])
-@app.route('/say/<this_string>/', methods=['POST'])
-@app.route('/cron/', methods=['GET'])
-@app.route('/cron/', methods=['DELETE'])
-@app.route('/cron/at/boot/', methods=['POST'])
-@app.route('/volume/down/<number>/', methods=['POST'])
-@app.route('/volume/up/<number>/', methods=['POST'])
-@app.route('/mute/', methods=['POST'])
-@app.route('/mute/<minutes>/minutes/', methods=['POST'])
-@app.route('/play/<station>/', methods=['POST'])
-@app.route('/stations/', methods=['GET'])
-@app.route('/nowplaying/', methods=['GET'])
-@app.route('/sleep/daily/<time>/', methods=['POST'])
-@app.route('/sleep/we/<time>/', methods=['POST'])
-@app.route('/sleep/wd/<time>/', methods=['POST'])
-@app.route('/wakeup/daily/<time>/', methods=['POST'])
-@app.route('/wakeup/we/<time>/', methods=['POST'])
-@app.route('/wakeup/wd/<time>/', methods=['POST'])
-@app.route('/mute/daily/<time>/', methods=['POST'])
-@app.route('/mute/we/<time>/', methods=['POST'])
-@app.route('/mute/wd/<time>/', methods=['POST'])
-@app.route('/sleep/', methods=['POST'])
-@app.route('/wakeup/', methods=['POST'])
-@app.route('/say/time/', methods=['POST'])
-@app.route('/say/<this_string>/', methods=['POST'])
+@app.route('/say/this_string/', methods=['POST'])
     </pre>
     """
     return usage
@@ -146,11 +123,6 @@ def volumeUp(number):
 def mute():
     call(['mpc', 'clear'])
     return "mute\n"
-
-@app.route('/mute/<minutes>/minutes/', methods=['POST'])
-def muteIn(minutes):
-    call(['/var/www/muteAt.sh', minutes])
-    return "mute in {} minutes.\n".format(minutes)
 
 #
 # List stations and play a station now
