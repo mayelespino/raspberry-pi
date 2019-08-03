@@ -11,25 +11,31 @@ import pyttsx
 #
 #
 stations = {}
-stations['nature'] = 'http://66.55.145.43:7051/'
+stations['npr'] = 'https://nis.stream.publicradio.org/nis.mp3'
+stations['nature01'] = 'http://66.55.145.43:7051/'
+stations['nature02'] = 'http://192.240.102.198:14244/'
+stations['nature03'] = 'http://209.126.119.76:8200/'
 stations['chill01'] = 'http://uk2.internet-radio.com:31491/'
 stations['chill02'] = 'http://radio.stereoscenic.com/asp-s'
-stations['chill03'] = 'http://198.105.218.124:8200/'
-stations['chill04'] = 'http://q2stream.wqxr.org/q2'
-stations['npr'] = 'https://nis.stream.publicradio.org/nis.mp3'
+stations['chill03'] = 'http://q2stream.wqxr.org/q2'
+stations['chill04'] = 'http://stream2.mpegradio.com:8070/'
 stations['logos01'] = 'http://14223.live.streamtheworld.com:80/WFFHFM_SC'
 stations['logos02'] = 'http://18543.live.streamtheworld.com/FAMILYRADIO_WESTAAC_SC'
 stations['logos03'] = 'http://ic2.christiannetcast.com/kver-fm'
-stations['alt'] = 'http://stream2.mpegradio.com:8070/'
+stations['logos04'] = 'http://144.217.195.24:8992'
 stations['dance01'] = 'http://pulseedm.cdnstream1.com:8124/1373_128'
-stations['dance02'] = 'http://uk7.internet-radio.com:8000/'
-stations['esp01'] = 'http://20283.live.streamtheworld.com/XEQR_FMAAC.aac'
-stations['edu01'] = 'http://netcast.kfjc.org/kfjc-192k-aac'
-stations['edu02'] = 'https://icecastle.csumb.edu/live128'
-stations['talk01'] = 'http://184.105.148.154:8000/live/'
-stations['talk02'] = 'http://provisioning.streamtheworld.com/pls/KCBSAM.pls'
-stations['wake'] = stations['dance02']
-stations['sleep'] = stations['chill04']
+stations['esp01'] = 'http://peridot.streamguys.com:5620/kdna-mp3'
+stations['esp02'] = 'http://198.105.218.124:8200/'
+stations['esp03'] = 'http://173.193.205.96:7055/stream'
+stations['esp04'] = 'http://server10.servistreaming.com:9011/'
+stations['talk01'] = 'http://provisioning.streamtheworld.com/pls/KCBSAM.pls'
+stations['talk02'] = 'http://142.4.217.133:9195'
+stations['talk03'] = 'http://176.31.98.109:4962'
+stations['talk04'] = 'http://167.114.64.181:8462'
+stations['talk05'] = 'http://netcast.kfjc.org/kfjc-192k-aac'
+stations['talk06'] = 'https://icecastle.csumb.edu/live128'
+stations['wakeup'] = stations['nature01']
+stations['sleep'] = stations['nature02']
 #
 # 
 #
@@ -304,13 +310,15 @@ def muteWeekday(time):
 #
 @app.route('/sleep/', methods=['POST'])
 def sleepNow():
+    call(['mpc', 'clear'])
     call(['mpc', 'add', stations['sleep'] ])
     call(['mpc', 'play'])
     return "stream sleep now.\n"
 
 @app.route('/wakeup/', methods=['POST'])
 def wakeupNow():
-    call(['mpc', 'add', stations['sleep'] ])
+    call(['mpc', 'clear'])
+    call(['mpc', 'add', stations['wakeup'] ])
     call(['mpc', 'play'])
     return "stream wakeup now.\n"
 
