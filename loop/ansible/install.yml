@@ -1,0 +1,42 @@
+---
+- hosts: all
+  remote_user: pi
+  sudo: yes
+  tasks:
+    - name: Package install
+      package: name={{ item }} state=latest update_cache=yes state=latest
+      with_items:
+        - python-pip
+        - python-dev
+        - build-essential
+        - redis-server
+        - bluez
+        - python-bluez
+        - pi-bluetooth
+        - obexpushd
+        - raspberrypi-sys-mods
+        - redis-server
+    - name: Pip install various
+      pip: name={{ item }} 
+      with_items:
+        - Flask
+        - requests
+        - redis
+        - tweepy
+        - python-nest
+    - name: configure bind in redis.conf
+      lineinfile: 
+        dest: /etc/redis/redis.conf
+        regexp: '^(.*)bind 127.0.0.1(.*)$' 
+        line: 'bind 0.0.0.0'
+        backrefs: yes
+    - name: Configure sysctl.conf
+      lineinfile:
+        dest=/etc/sysctl.conf
+        backup=yes
+        line='vm.overcommit_memory = 1'
+        regexp='^'
+        state=present
+        insertafter=EOF
+        create=True
+

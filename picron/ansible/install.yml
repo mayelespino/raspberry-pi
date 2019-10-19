@@ -1,0 +1,50 @@
+---
+- hosts: picron
+  remote_user: pi
+  sudo: yes
+  tasks:
+    - name: install apache2
+      apt: name=apache2 update_cache=yes state=latest
+    - name: install python-pip
+      package: name=python-pip state=latest
+    - name: install python-dev
+      package: name=python-dev state=latest
+    - name: install build-essential
+      package: name=build-essential state=latest
+    - name: install AT command
+      apt: name=at state=latest
+    - name: install monit
+      apt: name=monit state=latest
+    - name: configure http port in monitrc
+      copy: src=~/Repos/raspberry-pi/picron/etc/monitrc dest=/etc/monit
+            owner=root 
+            group=root 
+            mode=0777 
+            force=true
+    - name: install pytz
+      pip: name=pytz 
+    - name: install flask
+      pip: name=flask 
+    - name: install python-crontab
+      pip: name=python-crontab
+    - name: install jinja2
+      pip: name=jinja2
+    - name: install ntpd
+      package: name=ntpdate state=latest
+    - name: Set PST Time Zone - Remove local time file
+      command: rm /etc/localtime
+    - name: Set PST Time Zone - link Pacific time file 
+      command: ln -s /usr/share/zoneinfo/US/Pacific /etc/localtime
+    - name: Set PST Time Zone -  remove time zone file
+      command: rm /etc/timezone
+    - name: Set PST Time Zone -  Write Pacifict to time zone file
+      command: echo "US/Pacific" | sudo tee /etc/timezone
+    - name: restart apache2
+      service: name=apache2 state=restarted
+    - name: install mpd
+      apt: name=mpd update_cache=yes state=latest
+    - name: install mpc
+      apt: name=mpc update_cache=yes state=latest
+    - name: install pyttsx 
+      pip: name=pyttsx 
+

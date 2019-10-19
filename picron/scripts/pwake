@@ -1,0 +1,2 @@
+#!/bin/zsh
+curl -X POST http://picron.local:5000/wakeup/now/

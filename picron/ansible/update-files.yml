@@ -1,0 +1,17 @@
+---
+- hosts: picron
+  remote_user: pi
+  sudo: yes
+  tasks:
+    - name: sync www folder
+      synchronize: src=~/Repos/raspberry-pi/picron/www dest=/var
+    - name: Copy monit config file
+      copy: src=~/Repos/raspberry-pi/picron/conf.d dest=/etc/monit
+        owner=root 
+        group=root 
+        mode=0777 
+        force=true
+    - name: stop picron app
+      command: /var/www/stopApp.sh
+    - name: start picron app
+      command: /var/www/startApp.sh

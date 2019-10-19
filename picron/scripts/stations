@@ -1,0 +1,2 @@
+#!/bin/zsh
+curl -X GET http://picron.local:5000/stations/

@@ -1,0 +1,29 @@
+---
+- hosts: all
+  remote_user: pi
+  sudo: yes
+  tasks:
+    - name: Package install
+      package: name={{ item }} state=latest update_cache=yes state=latest
+      with_items:
+        - python-pip
+        - python-dev
+        - build-essential
+        - redis-server
+    - name: Pip install various
+      pip: name={{ item }} 
+      with_items:
+        - Flask
+        - requests
+        - redis
+        - tweepy
+    - name: Update bashrc for PythonBrew for foo user
+      lineinfile:
+        dest= /etc/redis/redis.conf
+        backup=yes
+        line="slaveof 10.0.1.41 6379"
+        regexp='^'
+        state=present
+        insertafter=EOF
+        create=True
+
