@@ -1,4 +1,5 @@
 import smbus
+import datetime
 
 DEVICE_BUS = 1
 DEVICE_ADDR = 0x17
@@ -27,7 +28,5 @@ for i in range(TEMP_REG,HUMAN_DETECT + 1):
     aReceiveBuf.append(bus.read_byte_data(DEVICE_ADDR, i))
 
 if aReceiveBuf[HUMAN_DETECT] == 1 :
-    print("Live body detected within 5 seconds!")
-else:
-    print("No humans detected!")
-
+    currentDT = datetime.datetime.now()
+    print("%s-%s-%s %s:%s:%s" % (currentDT.day, currentDT.month, currentDT.year, currentDT.hour, currentDT.minute, currentDT.second))
