@@ -10,8 +10,28 @@
         owner=root
         group=root
         mode=0600
-    - name: Install git
+    - name: install git
       apt:
         name: git
         state: present
         update_cache: yes
+    - name: clone raspbery-pi repo
+      git: 
+        repo: "https://mayelespino:{{ githubpassword }}@github.com/mayelespino/raspberry-pi.git"
+        dest: /home/pi/repo/
+    - name: install hosts file
+      template:
+        src=templates/hosts.j2
+        dest=/etc/hosts
+    - name: install hostname file
+      template:
+        src=templates/hostname.j2
+        dest=/etc/hostname
+    - name: install motd file
+      template:
+        src=templates/motd.j2
+        dest=/etc/motd
+
+#
+# https://stackoverflow.com/questions/37841914/how-do-i-pass-username-and-password-while-using-ansible-git-module
+# invocation: ansible-playbook -i hosts new-pi.yml -e "githubpassword=xxxxxxx" -e "pihostname=xxxxx"
