@@ -1,0 +1,17 @@
+---
+- hosts: all
+  remote_user: pi
+  become: yes
+  tasks:
+    - name: write wpa_supplicant.conf
+      template: >
+        src=templates/wpa_supplicant.conf.j2
+        dest=/etc/wpa_supplicant/wpa_supplicant.conf
+        owner=root
+        group=root
+        mode=0600
+    - name: Install git
+      apt:
+        name: git
+        state: present
+        update_cache: yes

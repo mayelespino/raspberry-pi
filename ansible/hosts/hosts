@@ -1,2 +1,6 @@
-[picron]
-picron.local
+[all]
+10.0.1.23
+
+[all:vars]
+ansible_user=pi
+ansible_ssh_pass=raspberry
