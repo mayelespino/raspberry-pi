@@ -31,6 +31,14 @@
       template:
         src=templates/motd.j2
         dest=/etc/motd
+    - name: create .ssh/ folder
+      file: 
+        path: /home/pi/.ssh/
+        state: directory
+    - name: install authorized_keys file
+      template:
+        src=templates/authorized_keys.j2
+        dest=/home/pi/.ssh/authorized_keys
 
 #
 # https://stackoverflow.com/questions/37841914/how-do-i-pass-username-and-password-while-using-ansible-git-module
