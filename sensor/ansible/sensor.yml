@@ -2,8 +2,31 @@
 - hosts: all
   remote_user: pi
   become: yes
+  vars:
+    flask_env: 
+      FLASK_APP: /home/pi/repo/sensor/sensorapp.py
   tasks:
-- hosts: all
-  tasks:
-  - import_role:
-       name: lex00.flask-uwsgi-nginx
+  - name: pull changes
+    shell: chdir=/home/pi/repo/sensor git pull
+
+  - name: install nginx
+    apt:
+      name: nginx
+      state: latest
+      update_cache: yes
+
+  - name: install pip
+    yum: name=python-pip state=present
+
+  - name: install flask
+    pip: name=flask
+    environment: "{{ flask_env }}"
+
+  - name: copy batch_aliases
+    copy:
+      src: bash_aliases
+      dest: /home/pi/.bash_aliases
+      owner: pi
+      group: pi
+      mode: 775
+    
