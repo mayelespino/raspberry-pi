@@ -39,7 +39,23 @@
       template:
         src=templates/authorized_keys.j2
         dest=/home/pi/.ssh/authorized_keys
-
+    - name: Create a rambdisk directory if it does not exist
+      file:
+        path: /mnt/ramdisk
+        state: directory
+        mode: 0755
+    - name: write fstab
+      blockinfile: 
+        path: /etc/fstab
+        backup: yes
+        block: "
+tmpfs  /tmp    tmpfs    defaults,noatime,nosuid,size=100m    0 0 \n
+tmpfs  /var/tmp    tmpfs    defaults,noatime,nosuid,size=30m    0 0 \n
+tmpfs  /var/log    tmpfs    defaults,noatime,nosuid,mode=0755,size=100m    0 0 \n
+tmpfs  /var/run    tmpfs    defaults,noatime,nosuid,mode=0755,size=2m    0 0 \n
+tmpfs  /var/spool/mqueue    tmpfs    defaults,noatime,nosuid,mode=0700,gid=12,size=30m    0 0 \n
+tmpfs  /mnt/ramdisk tmpfs nodev,nosuid,size=50M 0 0
+"
 #
 # https://stackoverflow.com/questions/37841914/how-do-i-pass-username-and-password-while-using-ansible-git-module
 # invocation: ansible-playbook -i hosts new-pi.yml -e "githubpassword=xxxxxxx" -e "pihostname=xxxxx"
