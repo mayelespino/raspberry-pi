@@ -2,9 +2,6 @@
 - hosts: all
   remote_user: pi
   become: yes
-  vars:
-    flask_env: 
-      FLASK_APP: /home/pi/repo/sensor/sensorapp.py
   tasks:
   - name: pull changes
     shell: chdir=/home/pi/repo/sensor git pull
@@ -20,13 +17,15 @@
 
   - name: install flask
     pip: name=flask
-    environment: "{{ flask_env }}"
 
-  - name: copy batch_aliases
-    copy:
-      src: bash_aliases
-      dest: /home/pi/.bash_aliases
-      owner: pi
-      group: pi
-      mode: 775
-    
+  - name: add line to fstab
+    lineinfile:
+      path: /etc/fstab
+      line: 'tmpfs  /var/log/nginx/    tmpfs    defaults,noatime,nosuid,mode=0755,size=100m    0 0 \n'
+
+  - name: cron - run start.sh to start flask and nginx
+    cron:
+      user: pi
+      name: "run start.sh to start flask and nginx"
+      special_time: reboot
+      job: "/home/pi/repo/sensor/start.sh"
