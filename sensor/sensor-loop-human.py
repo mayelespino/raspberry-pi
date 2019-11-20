@@ -1,5 +1,6 @@
 import smbus
 import datetime
+import time
 
 DEVICE_BUS = 1
 DEVICE_ADDR = 0x17
@@ -24,10 +25,13 @@ aReceiveBuf = []
 
 aReceiveBuf.append(0x00) 
 
-for i in range(TEMP_REG,HUMAN_DETECT + 1):
-    aReceiveBuf.append(bus.read_byte_data(DEVICE_ADDR, i))
+while True:
+	bus = smbus.SMBus(DEVICE_BUS)
+	for i in range(TEMP_REG,HUMAN_DETECT + 1):
+    		aReceiveBuf.append(bus.read_byte_data(DEVICE_ADDR, i))
 
-if aReceiveBuf[HUMAN_DETECT] == 1 :
-    currentDT = datetime.datetime.now()
-    with open('/mnt/ramdisk/sensor-human.txt', 'w') as sensorFile:
-      sensorFile.write("%s-%s-%s %s:%s:%s" % (currentDT.day, currentDT.month, currentDT.year, currentDT.hour, currentDT.minute, currentDT.second))
+	if aReceiveBuf[HUMAN_DETECT] == 1 :
+		    currentDT = datetime.datetime.now()
+		    print("%s-%s-%s %s:%s:%s" % (currentDT.day, currentDT.month, currentDT.year, currentDT.hour, currentDT.minute, currentDT.second))
+	time.sleep(3)
+	print(".")
