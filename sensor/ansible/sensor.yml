@@ -18,6 +18,9 @@
   - name: install flask
     pip: name=flask
 
+  - name: install smbus
+    pip: name=smbus
+
   - name: add line to fstab
     lineinfile:
       path: /etc/fstab
@@ -29,3 +32,10 @@
       name: "run start.sh to start flask and nginx"
       special_time: reboot
       job: "/home/pi/repo/sensor/start.sh"
+
+  - name: cron - run sensor
+    cron:
+      user: pi
+      name: "run ambiant sensor and write to ramdisk"
+      minute: "*/15"
+      job: "/usr/bin/python /home/pi/repo/sensor/sensor-ambiant.py"

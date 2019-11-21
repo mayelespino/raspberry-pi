@@ -15,4 +15,6 @@ This tells your operating system to listen on all public IPs.
     - https://flask.palletsprojects.com/en/1.0.x/quickstart/
 - Run flask in the background
     - https://stackoverflow.com/questions/36465899/how-to-run-flask-server-in-the-background
+- Git cron
+  - https://docs.ansible.com/ansible/latest/modules/cron_module.html
     
