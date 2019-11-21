@@ -29,5 +29,5 @@ for i in range(TEMP_REG,HUMAN_DETECT + 1):
 
 if aReceiveBuf[HUMAN_DETECT] == 1 :
     currentDT = datetime.datetime.now()
-    with open('/mnt/ramdisk/sensor-human.txt', 'w') as sensorFile:
+    with open('/mnt/ramdisk/human.txt', 'w') as sensorFile:
       sensorFile.write("%s-%s-%s %s:%s:%s" % (currentDT.day, currentDT.month, currentDT.year, currentDT.hour, currentDT.minute, currentDT.second))

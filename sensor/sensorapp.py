@@ -7,7 +7,7 @@ def hello_world():
 
 @app.route('/human/')
 def human_sensor():
-    with open('/mnt/ramdisk/sensor-human.txt','r') as f:
+    with open('/mnt/ramdisk/human.txt','r') as f:
         data = f.read()
     return data
 
