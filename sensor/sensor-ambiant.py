@@ -60,6 +60,7 @@ with open('/mnt/ramdisk/humidity.txt', 'w') as sensorFile:
 with open('/mnt/ramdisk/onboard-temp.txt', 'w') as sensorFile:
   if aReceiveBuf[ON_BOARD_SENSOR_ERROR] != 0 :
     sensorFile.write("Onboard temperature and humidity sensor data may not be up to date!")
+  sensorFile.write("%d Celsius" % aReceiveBuf[BMP280_TEMP_REG])
 
 with open('/mnt/ramdisk/barometer.txt', 'w') as sensorFile:
   if aReceiveBuf[BMP280_STATUS] == 0 :
