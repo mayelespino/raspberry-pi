@@ -19,6 +19,8 @@
       git: 
         repo: "https://mayelespino:{{ githubpassword }}@github.com/mayelespino/raspberry-pi.git"
         dest: /home/pi/repo/
+      become: yes
+      become_user: pi
     - name: install hosts file
       template:
         src=templates/hosts.j2

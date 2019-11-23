@@ -1,5 +1,5 @@
 [all]
-raspberrypi.local
+speaker.local
 
 [all:vars]
 ansible_user=pi
