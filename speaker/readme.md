@@ -8,4 +8,4 @@
 - nature:
   - http://192.240.102.198:14244/listen.pls
   - http://5.39.71.159:8157/listen.pls
-  - http://192.240.102.198:14244/listen.pls
+  - http://94.23.252.14:8067/listen.pls
