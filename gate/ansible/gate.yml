@@ -22,6 +22,12 @@
       state: latest
       update_cache: yes
 
+  - name: install curl-php5
+    apt:
+      name: php5-curl
+      state: latest
+      update_cache: yes
+
   - name: install pip
     yum: name=python-pip state=present
 
