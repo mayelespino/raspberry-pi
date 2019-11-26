@@ -43,6 +43,9 @@ $result = curl_exec($ch);
 echo $result;
 ?>
 </td>
+<td>
+<a href="weather.php">weather at 95037</a>
+</td>
 </tr>
 
 </table>
