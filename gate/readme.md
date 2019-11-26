@@ -10,3 +10,7 @@
 
 - To check the health of the sensor.local
  - https://www.w3schools.com/python/ref_requests_get.asp
+
+- To get weather reports
+  - http://www.webupd8.org/2016/04/get-weather-information-from-terminal.html 
+  - Kudos to https://github.com/chubin/wttr.in
