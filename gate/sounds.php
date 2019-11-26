@@ -21,6 +21,8 @@
     <br/>
     <hr/>
     <input type="submit" name="100%" value="100%"/>
+    <input type="submit" name="95%" value="95%"/>
+    <input type="submit" name="85%" value="85%"/>
     <input type="submit" name="75%" value="75%"/>
     <input type="submit" name="50%" value="50%"/>
     <br/>
@@ -66,9 +68,24 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['bible']))
     play_bible();
 }
 
+if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['biblia']))
+{
+    play_biblia();
+}
+
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['100%']))
 {
     vol_100();
+}
+
+if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['95%']))
+{
+    vol_85();
+}
+
+if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['85%']))
+{
+    vol_85();
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['75%']))
@@ -101,6 +118,34 @@ function play_mute(){
 function vol_100(){
 	// From URL to get webpage contents. 
 	$url = "http://speaker.local:5000/100/"; 
+	// Initialize a CURL session. 
+	$ch = curl_init(); 
+	// Return Page contents. 
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+	//grab URL and pass it to the variable. 
+	curl_setopt($ch, CURLOPT_URL, $url); 
+	curl_setopt($ch, CURLOPT_POST, 1); 
+	$result = curl_exec($ch); 
+	echo $result; 
+}
+
+function vol_95(){
+	// From URL to get webpage contents. 
+	$url = "http://speaker.local:5000/95/"; 
+	// Initialize a CURL session. 
+	$ch = curl_init(); 
+	// Return Page contents. 
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+	//grab URL and pass it to the variable. 
+	curl_setopt($ch, CURLOPT_URL, $url); 
+	curl_setopt($ch, CURLOPT_POST, 1); 
+	$result = curl_exec($ch); 
+	echo $result; 
+}
+
+function vol_85(){
+	// From URL to get webpage contents. 
+	$url = "http://speaker.local:5000/85/"; 
 	// Initialize a CURL session. 
 	$ch = curl_init(); 
 	// Return Page contents. 
