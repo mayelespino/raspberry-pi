@@ -54,6 +54,16 @@ def vol_100():
     subprocess.Popen(["sudo","/usr/bin/amixer","set", "PCM", "--", "100%"])
     return "OK"
 
+@app.route('/95/', methods=['POST'])
+def vol_95():
+    subprocess.Popen(["sudo","/usr/bin/amixer","set", "PCM", "--", "95%"])
+    return "OK"
+
+@app.route('/85/', methods=['POST'])
+def vol_85():
+    subprocess.Popen(["sudo","/usr/bin/amixer","set", "PCM", "--", "85%"])
+    return "OK"
+
 @app.route('/75/', methods=['POST'])
 def vol_75():
     subprocess.Popen(["sudo","/usr/bin/amixer","set", "PCM", "--", "75%"])
