@@ -8,6 +8,8 @@
 <table>
 <tr>
 <td>
+<a href="sensor.php">sensor</a>
+</td><td>
 <?php
 // From URL to get webpage contents.
 $url = "http://sensor.local/";
@@ -20,10 +22,14 @@ curl_setopt($ch, CURLOPT_URL, $url);
 $result = curl_exec($ch);
 echo $result;
 ?>
-</td><td>
-<a href="sensor.php">sensor</a>
+
 </td><td>
 
+</td><td>
+
+<a href="sounds.php">sounds</a>
+
+</td><td>
 <?php
 // From URL to get webpage contents.
 $url = "http://speaker.local/";
@@ -36,10 +42,10 @@ curl_setopt($ch, CURLOPT_URL, $url);
 $result = curl_exec($ch);
 echo $result;
 ?>
-</td><td>
-<a href="sounds.php">sounds</a>
 </td>
 </tr>
+
 </table>
+
 </body>
 </html>
