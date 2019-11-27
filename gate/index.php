@@ -45,14 +45,17 @@ echo $result;
 </td>
 <tr/>
 </table>
+
 <br/>
+<h2>Links</h2>
 <a href="weather.php">weather at 95037</a><br/>
 <a href="https://www.211bayarea.org/santaclara/crisis-services/">211.org</a><br/> 
 <a href="https://twitter.com/hashtag/alertscc">alertscc</a><br/>
 <a href="https://www.sccgov.org/sites/oes/alertscc/Pages/home.aspx">sccgov.org</a> <br/>
+<a href="https://m.pge.com/#outages">pgne outages</a>
 <br/>
 
-<h2>Useful phone numbers</h2>
+<h2>Phone numbers</h2>
 <table>
 <tr>
 <td>
