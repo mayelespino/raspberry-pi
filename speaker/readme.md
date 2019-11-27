@@ -18,6 +18,23 @@
   - http://209.126.119.76:8200/listen.pls
 - ocean
   - http://5.39.71.159:8157/listen.pls
+- chill
+  - http://192.99.17.12:4516/listen.pls
+  - http://192.99.17.12:4950/listen.pls
+- trance
+  - http://uk4.internet-radio.com:8049/listen.pls
+  - http://hirschmilch.de:7000/listen.pls
+- bass
+  - http://uk1.internet-radio.com:8118/listen.pls
+- español
+  - http://176.31.117.120:8115/listen.pls
+  - 
+- experimental
+  - http://dallas.myautodj.com:8099/listen.pls
+  - http://akademieradio.de:80/play.m3u
+  - http://198.27.66.225:8570/listen.pls
+  - http://198.15.77.50:9368/listen.pls
+  - http://50.7.68.251:6982/listen.pls
 
 # Volume control
 - amixer set PCM -- 100%
