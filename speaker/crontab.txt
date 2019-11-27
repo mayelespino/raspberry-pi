@@ -1,0 +1,14 @@
+#Ansible: run start.sh to start speakerapp
+@reboot /home/pi/repo/speaker/start.sh
+#
+#
+# Play bird sounds from 11AM to 1PM
+0 10 * * * /home/pi/repo/speaker/birds.sh
+# Mute at 1 PM
+0 13 * * * curl -X POST http://speaker.local:5000/mute/
+#
+#
+# Start playing the bible at 9 PM
+0 21 * * * /home/pi/repo/speaker/bible.sh
+# Mute at 11 PM
+0 23 * * * curl -X POST http://speaker.local:5000/mute/
