@@ -1,7 +1,0 @@
----
-- hosts: pil00.local
-  remote_user: pi
-  sudo: yes
-  tasks:
-  - name: write the file
-    template: src=./templates/alarm.j2 dest=/etc/monit/conf.d/alarm backup=yes

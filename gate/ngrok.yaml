@@ -1,6 +1,7 @@
-authtoken: 5pLSm5Y6H5aXrJPek93Zu_2NazJYHt9r96Batsw1LEX
+authtoken: "AUTHTOKEN"
 tunnels:
   home:
     addr: 80
     proto: http
     subdomain: 17440hd
+    auth: "USER:PASSWORD"
