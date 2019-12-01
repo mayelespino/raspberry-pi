@@ -52,7 +52,10 @@ echo $result;
 <a href="https://www.211bayarea.org/santaclara/crisis-services/">211.org</a><br/> 
 <a href="https://twitter.com/hashtag/alertscc">alertscc</a><br/>
 <a href="https://www.sccgov.org/sites/oes/alertscc/Pages/home.aspx">sccgov.org</a> <br/>
-<a href="https://m.pge.com/#outages">pgne outages</a>
+<a href="https://m.pge.com/#outages">pgne outages</a><br/>
+<a href="https://511.org">511.org - Traffic map</a><br/>
+<a href="https://511.org/alerts/traffic">511.org - Traffic alerts</a><br/>
+<a href="https://511.org/alerts/transit">511.org - Transist alerts</a><br/>
 <br/>
 
 <h2>Phone numbers</h2>
