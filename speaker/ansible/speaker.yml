@@ -28,6 +28,21 @@
   - name: install flask
     pip: name=flask
 
+  - name: install gTTS
+    pip: name=gTTS
+
+  - name: install espeak
+    apt: 
+      name: espeak
+      state: latest
+      update_cache: yes
+
+  - name: install lynx
+    apt: 
+      name: lynx
+      state: latest
+      update_cache: yes
+
   - name: install mplayer
     apt: 
       name: mplayer
