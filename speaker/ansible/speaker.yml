@@ -16,12 +16,6 @@
       recurse: yes
     become: yes
 
-  - name: install nginx
-    apt:
-      name: nginx
-      state: latest
-      update_cache: yes
-
   - name: install pip
     yum: name=python-pip state=present
 
@@ -31,29 +25,13 @@
   - name: install gTTS
     pip: name=gTTS
 
-  - name: install fortune
+  - name: Apt install 
     apt: 
-      name: fortune
+      name: ['nginx', 'fortune', 'espeak', 'lynx', 'mplayer']
       state: latest
       update_cache: yes
-
-  - name: install espeak
-    apt: 
-      name: espeak
-      state: latest
-      update_cache: yes
-
-  - name: install lynx
-    apt: 
-      name: lynx
-      state: latest
-      update_cache: yes
-
-  - name: install mplayer
-    apt: 
-      name: mplayer
-      state: latest
-      update_cache: yes
+    tags:
+    - this
 
   - name: Add mount nginx to fstab
     lineinfile:
