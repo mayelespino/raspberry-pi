@@ -121,9 +121,15 @@ def say_quienes():
 #
 # Utils
 #
-@app.route('/cron/', methods=['GET'])
+@app.route('/cron/', methods=['POST'])
 def util_cron():
     p = subprocess.Popen(["/usr/bin/crontab","-l"], stdout=subprocess.PIPE)
+    out, err = p.communicate()
+    return out
+
+@app.route('/date_time/', methods=['POST'])
+def util_date_time():
+    p = subprocess.Popen(["/bin/date"], stdout=subprocess.PIPE)
     out, err = p.communicate()
     return out
 
