@@ -16,28 +16,32 @@
       recurse: yes
     become: yes
 
-  - name: install nginx
-    apt:
-      name: nginx
-      state: latest
-      update_cache: yes
-
   - name: install pip
     yum: name=python-pip state=present
 
   - name: install flask
     pip: name=flask
 
-  - name: install mplayer
+  - name: install gTTS
+    pip: name=gTTS
+
+  - name: Apt install 
     apt: 
-      name: mplayer
+      name: ['nginx', 'fortune', 'espeak', 'lynx', 'mplayer']
       state: latest
       update_cache: yes
+    tags:
+    - this
 
-  - name: add line to fstab
+  - name: Add mount nginx to fstab
     lineinfile:
       path: /etc/fstab
-      line: 'tmpfs  /var/log/nginx/    tmpfs    defaults,noatime,nosuid,mode=0755,size=100m    0 0 \n'
+      line: 'tmpfs  /var/log/nginx/    tmpfs    defaults,noatime,nosuid,mode=0755,size=100m    0 0'
+
+  - name: Add usb/media to fstab
+    lineinfile:
+      path: /etc/fstab
+      line: 'UUID=18A9-9943 /media vfat auto,nofail,noatime,users,rw,uid=pi,gid=pi 0 0'
 
   - name: cron - run start.sh to start flask and nginx
     cron:

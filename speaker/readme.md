@@ -40,3 +40,16 @@
 - amixer set PCM -- 100%
   - https://blog.paddlefish.net/?p=895
 
+# Text to speach
+- what worked for me was:gTTS
+  - https://pythonprogramminglanguage.com/text-to-speech/
+
+# Text only
+- Lynx - text only browser
+  - https://en.wikipedia.org/wiki/Lynx_(web_browser)/
+  - https://opensource.com/article/16/12/web-browsers-linux-command-line
+- Text only news:
+  - https://greycoder.com/a-list-of-text-only-new-sites/
+
+# Mount USB
+- https://www.raspberrypi-spy.co.uk/2014/05/how-to-mount-a-usb-flash-disk-on-the-raspberry-pi/
