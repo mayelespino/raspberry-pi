@@ -50,3 +50,6 @@
   - https://opensource.com/article/16/12/web-browsers-linux-command-line
 - Text only news:
   - https://greycoder.com/a-list-of-text-only-new-sites/
+
+# Mount USB
+- https://www.raspberrypi-spy.co.uk/2014/05/how-to-mount-a-usb-flash-disk-on-the-raspberry-pi/
