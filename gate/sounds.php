@@ -33,7 +33,7 @@
     <br/>
     <hr/>
     <input type="submit" name="cron" value="cron"/>
-    <input type="submit" name="date" value="date"/>
+    <input type="submit" name="date_time" value="date_time"/>
     <br/>
     <hr/>
 </form>
