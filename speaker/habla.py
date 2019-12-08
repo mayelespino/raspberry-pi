@@ -7,5 +7,5 @@ if len(sys.argv) < 2:
 else:
     tts = gTTS(text=str(sys.argv[1]), lang='es')
 
-tts.save("/tmp/tmp.mp3")
-os.system("mplayer /tmp/tmp.mp3")
+tts.save("/mnt/ramdisk/tmp.mp3")
+os.system("mplayer /mnt/ramdisk/tmp.mp3")
