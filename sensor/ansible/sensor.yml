@@ -6,17 +6,20 @@
   - name: pull changes
     shell: chdir=/home/pi/repo/sensor git pull
 
-  - name: install nginx
+  - name: Apt install packages
     apt:
-      name: nginx
+      name: ['nginx', 'bluez', 'python-bluez']
       state: latest
       update_cache: yes
+    tags:
+    - here
 
   - name: install pip
     yum: name=python-pip state=present
 
-  - name: install flask
-    pip: name=flask
+  - name: Pip install packages
+    pip: 
+       name: ['flask']
 
   - name: install smbus
     pip: name=smbus

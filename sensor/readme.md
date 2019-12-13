@@ -9,6 +9,16 @@ If you have the debugger disabled or trust the users on your network, you can ma
 '''flask run --host=0.0.0.0'''
 This tells your operating system to listen on all public IPs.
 
+# notes on pairing raspbery pi to iphone
+```
+sudo hciconfig -a
+sudo bluetoothctl
+[bluetooth] scan on
+# find your Iphone's BT address
+[bluetooth] scan off
+[bluetooth] pair XX:XX:XX:XX:XX
+[bluetooth] exit
+```
 
 # links 
 - Install flask
@@ -17,4 +27,8 @@ This tells your operating system to listen on all public IPs.
     - https://stackoverflow.com/questions/36465899/how-to-run-flask-server-in-the-background
 - Git cron
   - https://docs.ansible.com/ansible/latest/modules/cron_module.html
+- Who is home - detecting presence of bluetooth device
+  - https://www.instructables.com/id/Raspberry-Pi-Bluetooth-InOut-Board-or-Whos-Hom/
+  - https://www.raspberrypi.org/forums/viewtopic.php?t=164807
+
     
