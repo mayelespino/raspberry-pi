@@ -6,7 +6,7 @@
 <a href="index.php">[HOME]</a>
 <br/>
 
-<h2>sounds</h2>
+<h2>Speaker</h2>
 
 <form action="sounds.php" method="post">
     <hr/>
@@ -20,11 +20,20 @@
     <input type="submit" name="biblia" value="biblia"/>
     <br/>
     <hr/>
+    <input type="submit" name="siri_news" value="siri_news"/>
+    <input type="submit" name="siri_waitwait" value="siri_waitwait"/>
+    <input type="submit" name="siri_stop" value="siri_stop"/>
+    <br/>
+    <hr/>
     <input type="submit" name="100%" value="100%"/>
     <input type="submit" name="95%" value="95%"/>
     <input type="submit" name="85%" value="85%"/>
     <input type="submit" name="75%" value="75%"/>
     <input type="submit" name="50%" value="50%"/>
+    <br/>
+    <hr/>
+    <input type="submit" name="cron" value="cron"/>
+    <input type="submit" name="date_time" value="date_time"/>
     <br/>
     <hr/>
 </form>
@@ -35,75 +44,97 @@
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['mute']))
 {
-    play_mute();
+    play("mute");
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['nature']))
 {
-    play_nature();
+    play("nature");
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['scanner']))
 {
-    play_scanner();
+   play("scanner");
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['pink']))
 {
-    play_pink();
+    play("pink");
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['birds']))
 {
-    play_birds();
+    play("birds");
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['ocean']))
 {
-    play_ocean();
+    play("ocean");
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['bible']))
 {
-    play_bible();
+    play("bible");
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['biblia']))
 {
-    play_biblia();
+   play("biblia");
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['100%']))
 {
-    vol_100();
+    vol("100");
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['95%']))
 {
-    vol_85();
+    vol("95");
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['85%']))
 {
-    vol_85();
+    vol("85");
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['75%']))
 {
-    vol_75();
+    vol("75");
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['50%']))
 {
-    vol_50();
+    vol("50");
 }
 
+if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['siri_news']))
+{
+    siri("news");
+}
 
+if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['siri_waitwait']))
+{
+    siri("waitwait");
+}
 
+if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['siri_stop']))
+{
+    siri("stop");
+}
 
-function play_mute(){
+if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['cron']))
+{
+    cron();
+}
+
+if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['date_time']))
+{
+    date_time();
+}
+
+function vol($word){
 	// From URL to get webpage contents. 
-	$url = "http://speaker.local:5000/mute/"; 
+	$url = sprintf("http://speaker.local:5000/%s/",$word);
 	// Initialize a CURL session. 
 	$ch = curl_init(); 
 	// Return Page contents. 
@@ -115,9 +146,9 @@ function play_mute(){
 	echo $result; 
 }
 
-function vol_100(){
+function play($word){
 	// From URL to get webpage contents. 
-	$url = "http://speaker.local:5000/100/"; 
+	$url = sprintf("http://speaker.local:5000/%s/",$word);
 	// Initialize a CURL session. 
 	$ch = curl_init(); 
 	// Return Page contents. 
@@ -129,9 +160,9 @@ function vol_100(){
 	echo $result; 
 }
 
-function vol_95(){
+function siri($word){
 	// From URL to get webpage contents. 
-	$url = "http://speaker.local:5000/95/"; 
+	$url = sprintf("http://speaker.local:5000/siri_%s/",$word);
 	// Initialize a CURL session. 
 	$ch = curl_init(); 
 	// Return Page contents. 
@@ -143,9 +174,9 @@ function vol_95(){
 	echo $result; 
 }
 
-function vol_85(){
+function cron(){
 	// From URL to get webpage contents. 
-	$url = "http://speaker.local:5000/85/"; 
+	$url = "http://speaker.local:5000/cron/";
 	// Initialize a CURL session. 
 	$ch = curl_init(); 
 	// Return Page contents. 
@@ -157,121 +188,9 @@ function vol_85(){
 	echo $result; 
 }
 
-function vol_75(){
+function date_time(){
 	// From URL to get webpage contents. 
-	$url = "http://speaker.local:5000/75/"; 
-	// Initialize a CURL session. 
-	$ch = curl_init(); 
-	// Return Page contents. 
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-	//grab URL and pass it to the variable. 
-	curl_setopt($ch, CURLOPT_URL, $url); 
-	curl_setopt($ch, CURLOPT_POST, 1); 
-	$result = curl_exec($ch); 
-	echo $result; 
-}
-
-function vol_50(){
-	// From URL to get webpage contents. 
-	$url = "http://speaker.local:5000/50/"; 
-	// Initialize a CURL session. 
-	$ch = curl_init(); 
-	// Return Page contents. 
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-	//grab URL and pass it to the variable. 
-	curl_setopt($ch, CURLOPT_URL, $url); 
-	curl_setopt($ch, CURLOPT_POST, 1); 
-	$result = curl_exec($ch); 
-	echo $result; 
-}
-
-function play_nature(){
-	// From URL to get webpage contents. 
-	$url = "http://speaker.local:5000/nature/"; 
-	// Initialize a CURL session. 
-	$ch = curl_init(); 
-	// Return Page contents. 
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-	//grab URL and pass it to the variable. 
-	curl_setopt($ch, CURLOPT_URL, $url); 
-	curl_setopt($ch, CURLOPT_POST, 1); 
-	$result = curl_exec($ch); 
-	echo $result; 
-}
-
-function play_scanner(){
-	// From URL to get webpage contents. 
-	$url = "http://speaker.local:5000/scanner/"; 
-	// Initialize a CURL session. 
-	$ch = curl_init(); 
-	// Return Page contents. 
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-	//grab URL and pass it to the variable. 
-	curl_setopt($ch, CURLOPT_URL, $url); 
-	curl_setopt($ch, CURLOPT_POST, 1); 
-	$result = curl_exec($ch); 
-	echo $result; 
-}
-
-function play_pink(){
-	// From URL to get webpage contents. 
-	$url = "http://speaker.local:5000/pink/"; 
-	// Initialize a CURL session. 
-	$ch = curl_init(); 
-	// Return Page contents. 
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-	//grab URL and pass it to the variable. 
-	curl_setopt($ch, CURLOPT_URL, $url); 
-	curl_setopt($ch, CURLOPT_POST, 1); 
-	$result = curl_exec($ch); 
-	echo $result; 
-}
-
-function play_birds(){
-	// From URL to get webpage contents. 
-	$url = "http://speaker.local:5000/birds/"; 
-	// Initialize a CURL session. 
-	$ch = curl_init(); 
-	// Return Page contents. 
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-	//grab URL and pass it to the variable. 
-	curl_setopt($ch, CURLOPT_URL, $url); 
-	curl_setopt($ch, CURLOPT_POST, 1); 
-	$result = curl_exec($ch); 
-	echo $result; 
-}
-
-function play_ocean(){
-	// From URL to get webpage contents. 
-	$url = "http://speaker.local:5000/ocean/"; 
-	// Initialize a CURL session. 
-	$ch = curl_init(); 
-	// Return Page contents. 
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-	//grab URL and pass it to the variable. 
-	curl_setopt($ch, CURLOPT_URL, $url); 
-	curl_setopt($ch, CURLOPT_POST, 1); 
-	$result = curl_exec($ch); 
-	echo $result; 
-}
-
-function play_bible(){
-	// From URL to get webpage contents. 
-	$url = "http://speaker.local:5000/bible/"; 
-	// Initialize a CURL session. 
-	$ch = curl_init(); 
-	// Return Page contents. 
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-	//grab URL and pass it to the variable. 
-	curl_setopt($ch, CURLOPT_URL, $url); 
-	curl_setopt($ch, CURLOPT_POST, 1); 
-	$result = curl_exec($ch); 
-	echo $result; 
-}
-
-function play_biblia(){
-	// From URL to get webpage contents. 
-	$url = "http://speaker.local:5000/biblia/"; 
+	$url = "http://speaker.local:5000/date_time/";
 	// Initialize a CURL session. 
 	$ch = curl_init(); 
 	// Return Page contents. 
