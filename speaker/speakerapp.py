@@ -15,11 +15,6 @@ def hello_world():
 # Internet Radio
 #
 
-@app.route('/mute/', methods=['POST'])
-def play_mute():
-    subprocess.Popen(["/usr/bin/pkill","mplayer","-c"])
-    return "play_mute - OK"
-
 @app.route('/scanner/', methods=['POST'])
 def play_scanner():
     subprocess.Popen(["/usr/bin/mplayer","-playlist","http://198.178.123.20:10488/listen.pls"])
@@ -57,9 +52,30 @@ def play_ocean():
     subprocess.Popen(["/usr/bin/mplayer","-playlist","http://5.39.71.159:8157/listen.pls"])
     return "play_ocean - OK"
 
+@app.route('/aperadio/', methods=['POST'])
+def play_aperadio():
+    subprocess.Popen(["/usr/bin/mplayer","-playlist","http://dallas.myautodj.com:8099/listen.pls"])
+    return "play_aperadio - OK"
+
+@app.route('/kcbs/', methods=['POST'])
+def play_kcbs():
+    subprocess.Popen(["/usr/bin/omxplayer","http://19273.live.streamtheworld.com/KCBSAMAAC_SC"])
+    return "play_kcbs - OK"
+
+@app.route('/kqed/', methods=['POST'])
+def play_kqed():
+    subprocess.Popen(["/usr/bin/omxplayer","https://streams.kqed.org/kqedradio"])
+    return "play_kqed - OK"
+
 #
 # Volume
 #
+
+@app.route('/mute/', methods=['POST'])
+def play_mute():
+    subprocess.Popen(["/usr/bin/pkill","mplayer","-c"])
+    subprocess.Popen(["/usr/bin/pkill","omxplayer","-c"])
+    return "play_mute - OK"
 
 @app.route('/100/', methods=['POST'])
 def vol_100():
