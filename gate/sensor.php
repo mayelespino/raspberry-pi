@@ -89,6 +89,10 @@ echo $homepage;
 </table>
 
 <h2>History</h2>
+<?php
+$homepage = file_get_contents('http://sensor.local:5000/temp-history/');
+echo str_replace("\n", "<br/>", $homepage);
+?>
 
 </body>
 </html>
