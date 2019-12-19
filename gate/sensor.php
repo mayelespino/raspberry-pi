@@ -89,8 +89,15 @@ echo $homepage;
 </table>
 
 <h2>History</h2>
+<h3>Temperature</h3>
 <?php
 $homepage = file_get_contents('http://sensor.local:5000/temp-history/');
+echo str_replace("\n", "<br/>", $homepage);
+?>
+
+<h3>@Home</h3>
+<?php
+$homepage = file_get_contents('http://sensor.local:5000/athome-history/');
 echo str_replace("\n", "<br/>", $homepage);
 ?>
 
