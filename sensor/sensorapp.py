@@ -67,5 +67,11 @@ def temp_history():
         data = f.read()
     return data
 
+@app.route('/athome-history/')
+def athome_history():
+    with open('/mnt/ramdisk/bluetooth-history.txt','r') as f:
+        data = f.read()
+    return data
+
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0')
