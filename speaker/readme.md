@@ -1,5 +1,7 @@
 # Speaker pi
-
+Web pages with stations:
+- https://radio-locator.com
+- https://www.internet-radio.com
 # Internet radio
 - scanner:
   - http://198.178.123.20:10488/listen.pls
@@ -28,14 +30,19 @@
   - http://uk1.internet-radio.com:8118/listen.pls
 - español
   - http://176.31.117.120:8115/listen.pls
-  - 
 - experimental
   - http://dallas.myautodj.com:8099/listen.pls
   - http://akademieradio.de:80/play.m3u
   - http://198.27.66.225:8570/listen.pls
   - http://198.15.77.50:9368/listen.pls
   - http://50.7.68.251:6982/listen.pls
-
+- Relax/ white noise
+  - http://198.178.123.17:8764/listen.pls
+- Local radio stations
+  - https://streams.kqed.org/kqedradio
+  - http://19273.live.streamtheworld.com/KCBSAMAAC_SC
+- For dogs
+  - https://soundcloud.com/calmpetsmusicacademy/sets/healing-frequencies-for-pets
 # Volume control
 - amixer set PCM -- 100%
   - https://blog.paddlefish.net/?p=895
