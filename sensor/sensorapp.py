@@ -47,5 +47,31 @@ def time_stamp():
         data = f.read()
     return data
 
+@app.route('/bt-stamp/')
+def bt_stamp():
+    with open('/mnt/ramdisk/bluetooth-stamp.txt','r') as f:
+        data = f.read()
+    return data
+
+@app.route('/bt-status/')
+def bt_status():
+    with open('/mnt/ramdisk/bluetooth-status.txt','r') as f:
+        data = f.read()
+    return data
+#
+#
+#
+@app.route('/temp-history/')
+def temp_history():
+    with open('/mnt/ramdisk/temperature-history.txt','r') as f:
+        data = f.read()
+    return data
+
+@app.route('/athome-history/')
+def athome_history():
+    with open('/mnt/ramdisk/bluetooth-history.txt','r') as f:
+        data = f.read()
+    return data
+
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0')
