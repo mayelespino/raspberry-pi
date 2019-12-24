@@ -15,7 +15,7 @@
     <input type="submit" name="scanner" value="scanner"/>
     <input type="submit" name="pink" value="pink"/>
     <input type="submit" name="birds" value="birds"/>
-    <input type="submit" name="ocean" value="ocean"/>
+    <input type="submit" name="kcbs" value="kcbs"/>
     <input type="submit" name="bible" value="bible"/>
     <input type="submit" name="biblia" value="biblia"/>
     <br/>
@@ -67,9 +67,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['birds']))
     play("birds");
 }
 
-if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['ocean']))
+if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['kcbs']))
 {
-    play("ocean");
+    play("kcbs");
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['bible']))
@@ -133,64 +133,29 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['date_time']))
 }
 
 function vol($word){
-	// From URL to get webpage contents. 
-	$url = sprintf("http://speaker.local:5000/%s/",$word);
-	// Initialize a CURL session. 
-	$ch = curl_init(); 
-	// Return Page contents. 
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-	//grab URL and pass it to the variable. 
-	curl_setopt($ch, CURLOPT_URL, $url); 
-	curl_setopt($ch, CURLOPT_POST, 1); 
-	$result = curl_exec($ch); 
-	echo $result; 
+	echo post_it($word);
 }
 
 function play($word){
-	// From URL to get webpage contents. 
-	$url = sprintf("http://speaker.local:5000/%s/",$word);
-	// Initialize a CURL session. 
-	$ch = curl_init(); 
-	// Return Page contents. 
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-	//grab URL and pass it to the variable. 
-	curl_setopt($ch, CURLOPT_URL, $url); 
-	curl_setopt($ch, CURLOPT_POST, 1); 
-	$result = curl_exec($ch); 
-	echo $result; 
+	echo post_it($word);
 }
 
 function siri($word){
-	// From URL to get webpage contents. 
-	$url = sprintf("http://speaker.local:5000/siri_%s/",$word);
-	// Initialize a CURL session. 
-	$ch = curl_init(); 
-	// Return Page contents. 
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-	//grab URL and pass it to the variable. 
-	curl_setopt($ch, CURLOPT_URL, $url); 
-	curl_setopt($ch, CURLOPT_POST, 1); 
-	$result = curl_exec($ch); 
-	echo $result; 
+	$path = sprintf("siri_%s",$word);
+	echo post_it($path);
 }
 
 function cron(){
-	// From URL to get webpage contents. 
-	$url = "http://speaker.local:5000/cron/";
-	// Initialize a CURL session. 
-	$ch = curl_init(); 
-	// Return Page contents. 
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-	//grab URL and pass it to the variable. 
-	curl_setopt($ch, CURLOPT_URL, $url); 
-	curl_setopt($ch, CURLOPT_POST, 1); 
-	$result = curl_exec($ch); 
-	echo str_replace("\n", "<br/>", $result); 
+	echo post_it("cron");
 }
 
 function date_time(){
+	echo post_it("date_time");
+}
+
+function post_it($path) {
 	// From URL to get webpage contents. 
-	$url = "http://speaker.local:5000/date_time/";
+	$url = sprintf("http://speaker.local:5000/%s/", $path);
 	// Initialize a CURL session. 
 	$ch = curl_init(); 
 	// Return Page contents. 
@@ -199,7 +164,7 @@ function date_time(){
 	curl_setopt($ch, CURLOPT_URL, $url); 
 	curl_setopt($ch, CURLOPT_POST, 1); 
 	$result = curl_exec($ch); 
-	echo $result; 
+	return(str_replace("\n", "<br/>", $result)); 
 }
 
 ?> 

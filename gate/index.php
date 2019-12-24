@@ -31,7 +31,7 @@ echo $result;
 
 </td><td>
 
-<a href="sounds.php">speaker PI</a>
+<a href="speaker.php">speaker PI</a>
 
 </td><td>
 
