@@ -27,7 +27,7 @@
 
   - name: Apt install 
     apt: 
-      name: ['nginx', 'fortune', 'espeak', 'lynx', 'mplayer']
+      name: ['nginx', 'fortune', 'espeak', 'lynx', 'mplayer', 'omxplayer']
       state: latest
       update_cache: yes
     tags:
