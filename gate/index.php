@@ -1,5 +1,4 @@
 <html>
-<head>
 </head>
 <body>
 
@@ -76,8 +75,12 @@ echo $result;
 <iframe src="http://wttr.in/95037" height="130" width="240"></iframe>
 <br>
 <a href="weather.php">Full weather 95037</a><br/>
-
 <br/>
+
+<h2>Spare the air</h2>
+<iframe src="http://baaqmdmapsprod.azurewebsites.net/map-open-burn.html" frameborder="0" height="300" width="300" allowfullscreen="true"></iframe>
+<br>
+
 <h2>Alerts</h2>
 <a href="https://twitter.com/hashtag/alertscc">alertscc</a><br/>
 <a href="https://www.sccgov.org/sites/oes/alertscc/Pages/home.aspx">sccgov.org</a> <br/>
