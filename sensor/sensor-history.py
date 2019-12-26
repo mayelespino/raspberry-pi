@@ -20,8 +20,8 @@ with open(tempFileName, 'r') as tf:
   temperature = tf.read()
   tokens = temperature.split()
   tempInt = int(tokens[0])
-  tempLine = "-" * tempInt
-  fullTempLine = dt_string + "_|_" + temperature + "_|" + tempLine + "+"
+  tempLine = "*" * tempInt
+  fullTempLine = dt_string + " [" + temperature + "] " + tempLine 
 
 if not os.path.exists(tempHistoryFileName):
     with open(tempHistoryFileName, 'w'): pass
@@ -45,7 +45,7 @@ with open(tempHistoryFileName, 'w') as hf:
 fullAtHomeLine = ""
 with open(atHomeFileName, 'r') as hf:
   atHome = hf.read()
-  fullAtHomeLine = dt_string + "=>" + atHome 
+  fullAtHomeLine = dt_string + " " + atHome 
 
 if not os.path.exists(atHomeHistoryFileName):
     with open(atHomeHistoryFileName, 'w'): pass
