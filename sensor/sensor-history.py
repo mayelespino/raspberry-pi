@@ -20,8 +20,9 @@ with open(tempFileName, 'r') as tf:
   temperature = tf.read()
   tokens = temperature.split()
   tempInt = int(tokens[0])
+  tempFarenheit = tempInt * 1.8 + 32
   tempLine = "*" * tempInt
-  fullTempLine = dt_string + " [" + temperature + "] " + tempLine 
+  fullTempLine = dt_string + " [" + tokens[0] + " C / " + str(tempFarenheit) + " F] " + tempLine 
 
 if not os.path.exists(tempHistoryFileName):
     with open(tempHistoryFileName, 'w'): pass
