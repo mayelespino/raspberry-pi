@@ -4,11 +4,22 @@
 
 <h1>17440 Holiday Drive</h1>
 <a href="index.php">[HOME]</a>
-<br/>
 
 <h2>Speaker</h2>
 
-<form action="sounds.php" method="post">
+<br/>
+<B>
+<?php
+date_default_timezone_set('America/Los_Angeles');
+$date   = new DateTime(); //this returns the current date time
+echo date_format($date,"Y/m/d H:i:s");
+echo $result;
+?>
+<B/>
+<br/>
+<br/>
+
+<form action="speaker.php" method="post">
     <hr/>
     <input type="submit" name="mute" value="mute"/>
     <input type="submit" name="nature" value="nature"/>
@@ -44,67 +55,67 @@
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['mute']))
 {
-    play("mute");
+  echo post_it("mute");
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['nature']))
 {
-    play("nature");
+  echo post_it("nature");
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['scanner']))
 {
-   play("scanner");
+  echo post_it("scanner");
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['pink']))
 {
-    play("pink");
+  echo post_it("pink");
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['birds']))
 {
-    play("birds");
+  echo post_it("birds");
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['kcbs']))
 {
-    play("kcbs");
+  echo post_it("kcbs");
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['bible']))
 {
-    play("bible");
+  echo post_it("bible");
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['biblia']))
 {
-   play("biblia");
+  echo post_it("biblia");
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['100%']))
 {
-    vol("100");
+  echo post_it("100");
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['95%']))
 {
-    vol("95");
+  echo post_it("95");
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['85%']))
 {
-    vol("85");
+  echo post_it("85");
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['75%']))
 {
-    vol("75");
+  echo post_it("75");
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['50%']))
 {
-    vol("50");
+  echo post_it("50");
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['siri_news']))
@@ -124,20 +135,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['siri_stop']))
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['cron']))
 {
-    cron();
+  echo post_it("cron");
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['date_time']))
 {
-    date_time();
-}
-
-function vol($word){
-	echo post_it($word);
-}
-
-function play($word){
-	echo post_it($word);
+  echo post_it("date_time");
 }
 
 function siri($word){
@@ -145,25 +148,10 @@ function siri($word){
 	echo post_it($path);
 }
 
-function cron(){
-	echo post_it("cron");
-}
-
-function date_time(){
-	echo post_it("date_time");
-}
-
 function post_it($path) {
-	// From URL to get webpage contents. 
+	require_once('functions.php');
 	$url = sprintf("http://speaker.local:5000/%s/", $path);
-	// Initialize a CURL session. 
-	$ch = curl_init(); 
-	// Return Page contents. 
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-	//grab URL and pass it to the variable. 
-	curl_setopt($ch, CURLOPT_URL, $url); 
-	curl_setopt($ch, CURLOPT_POST, 1); 
-	$result = curl_exec($ch); 
+	$result = post_url($url); 
 	return(str_replace("\n", "<br/>", $result)); 
 }
 

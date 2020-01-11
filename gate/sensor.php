@@ -7,8 +7,20 @@
 
 <a href="index.php">[HOME]</a>
 
-<h2>Sensors</h2>
+<h2>Sensor</h2>
+
+<B>
+<?php
+date_default_timezone_set('America/Los_Angeles');
+$date   = new DateTime(); //this returns the current date time
+echo date_format($date,"Y/m/d H:i:s");
+echo $result;
+?>
+</B>
 <br/>
+<br/>
+
+
 
 <table border=1>
 <tr>

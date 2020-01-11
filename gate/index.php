@@ -5,6 +5,17 @@
 <h1>17440 Holiday Drive</h1>
 <h2>Pi status</h2>
 
+<B>
+<?php
+date_default_timezone_set('America/Los_Angeles');
+$date   = new DateTime(); //this returns the current date time
+echo date_format($date,"Y/m/d H:i:s");
+echo $result;
+?>
+<B/>
+<br/>
+<br/>
+
 <table border=1>
 <tr>
 <td>
@@ -14,16 +25,14 @@
 </td><td>
 
 <?php
-// From URL to get webpage contents.
+require_once('functions.php');
 $url = "http://sensor.local/";
-// Initialize a CURL session.
-$ch = curl_init();
-// Return Page contents.
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-//grab URL and pass it to the variable.
-curl_setopt($ch, CURLOPT_URL, $url);
-$result = curl_exec($ch);
-echo $result;
+$result = get_url($url);
+if ($result == '' ) {
+  echo "<b><font color=\"red\">OUT</font></b>";
+} else {
+  echo "<b><font color=\"green\">OK</font></b>";
+}
 ?>
 
 </td><td>
@@ -35,16 +44,14 @@ echo $result;
 </td><td>
 
 <?php
-// From URL to get webpage contents.
+require_once('functions.php');
 $url = "http://speaker.local/";
-// Initialize a CURL session.
-$ch = curl_init();
-// Return Page contents.
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-//grab URL and pass it to the variable.
-curl_setopt($ch, CURLOPT_URL, $url);
-$result = curl_exec($ch);
-echo $result;
+$result = get_url($url);
+if ($result == '' ) {
+  echo "<b><font color=\"red\">OUT</font></b>";
+} else {
+  echo "<b><font color=\"green\">OK</font></b>";
+}
 ?>
 
 </td>
@@ -55,16 +62,14 @@ At home
 </td><td>
 
 <?php
-// From URL to get webpage contents.
+require_once('functions.php');
 $url = "http://sensor.local:5000/bt-status/";
-// Initialize a CURL session.
-$ch = curl_init();
-// Return Page contents.
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-//grab URL and pass it to the variable.
-curl_setopt($ch, CURLOPT_URL, $url);
-$result = curl_exec($ch);
-echo $result;
+$result = get_url($url);
+if ($result != "IN" ) {
+  echo "<b><font color=\"red\">OUT</font></b>";
+} else {
+  echo "<b><font color=\"green\">IN</font></b>";
+}
 ?>
 
 </td>
