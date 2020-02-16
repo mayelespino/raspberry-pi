@@ -42,7 +42,18 @@ Web pages with stations:
   - https://streams.kqed.org/kqedradio
   - http://19273.live.streamtheworld.com/KCBSAMAAC_SC
 - For dogs
-  - https://soundcloud.com/calmpetsmusicacademy/sets/healing-frequencies-for-pets
+  - https://soundcloud.com/calmpetsmusicacademy/sets/healing-frequencies-for-pets - not good for streaming
+  - http://99.198.118.250:8241/listen.pls
+  - http://yp.shoutcast.com/sbin/tunein-station.pls?id=1794904 - Ducks, etc.
+  - http://yp.shoutcast.com/sbin/tunein-station.pls?id=1632399 - sleep scap
+- Old time radio
+  - http://176.31.98.109:4962/listen.pls
+  - http://69.46.24.226:7006/listen.pls
+  - http://74.50.122.103:7372/listen.pls
+  - http://95.211.3.65:9185/listen.pls - Science Fiction
+# Pages that have internet streaming
+  - https://www.radioforge.com/faqs/find-valid-radio-stream-url-from-icecast-or-shoutcast-pls-m3u-xspf/
+
 # Volume control
 - amixer set PCM -- 100%
   - https://blog.paddlefish.net/?p=895
