@@ -67,6 +67,16 @@ def play_kqed():
     subprocess.Popen(["/usr/bin/omxplayer","https://streams.kqed.org/kqedradio"])
     return "play_kqed - OK"
 
+@app.route('/dogrelax/', methods=['POST'])
+def play_dogrelax():
+    subprocess.Popen(["/usr/bin/mplayer","-playlist","http://yp.shoutcast.com/sbin/tunein-station.pls?id=1794904"])
+    return "play_dogrelax - OK"
+
+@app.route('/talking/', methods=['POST'])
+def play_talking():
+    subprocess.Popen(["/usr/bin/mplayer","-playlist","http://74.50.122.103:7372/listen.pls"])
+    return "play_talking - OK"
+
 #
 # Volume
 #
