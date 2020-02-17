@@ -1,4 +1,7 @@
 # Speaker pi
+## Home page
+![home page]("images/speaker_home_page.png")
+
 Web pages with stations:
 - https://radio-locator.com
 - https://www.internet-radio.com
@@ -77,7 +80,7 @@ Web pages with stations:
 - https://flask.palletsprojects.com/en/1.0.x/config/
 
 # config file (config.py)
-'''
+```
     STATIONS = {
               "nature1" : "http://192.240.102.198:14244/listen.pls",
               "nature2" : "http://5.39.71.159:8157/listen.pls",
@@ -100,4 +103,4 @@ Web pages with stations:
               "talk3" : "http://74.50.122.103:7372/listen.pls",
               "talk4" : "http://95.211.3.65:9185/listen.pls"
               }
-'''
+```
