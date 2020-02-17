@@ -1,6 +1,6 @@
 # Speaker pi
 ## Home page
-![home page]("images/speaker_home_page.png")
+![home page](images/speaker_home_page.png)
 
 Web pages with stations:
 - https://radio-locator.com
