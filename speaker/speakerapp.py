@@ -2,14 +2,17 @@ from flask import Flask
 import subprocess 
 
 app = Flask(__name__)
+app.config.from_object("config.ProductionConfig")
 
 #
 # Health check
 #
 
 @app.route('/')
-def hello_world():
-    return 'OK'
+def root():
+    dict = app.config["STATIONS"]
+    stations = str(dict).replace(",","<BR/>\n")
+    return stations
 
 #
 # Internet Radio
@@ -66,6 +69,16 @@ def play_kcbs():
 def play_kqed():
     subprocess.Popen(["/usr/bin/omxplayer","https://streams.kqed.org/kqedradio"])
     return "play_kqed - OK"
+
+@app.route('/dogs/', methods=['POST'])
+def play_dogrelax():
+    subprocess.Popen(["/usr/bin/mplayer","-playlist","http://yp.shoutcast.com/sbin/tunein-station.pls?id=1794904"])
+    return "play_dogrelax - OK"
+
+@app.route('/talking/', methods=['POST'])
+def play_talking():
+    subprocess.Popen(["/usr/bin/mplayer","-playlist","http://74.50.122.103:7372/listen.pls"])
+    return "play_talking - OK"
 
 #
 # Volume
