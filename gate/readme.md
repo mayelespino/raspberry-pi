@@ -1,4 +1,6 @@
-# gate - 
+# gate-pi
+![gate1a](images/gate-1a.png)
+![gate1b](images/gate-1b.png)
 
 
 # Links and Notes
