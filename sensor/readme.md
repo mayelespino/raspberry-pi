@@ -1,5 +1,5 @@
 # sensor pi
-![homepies](images/sensor-p1.png)
+![sensor](images/sensor-1.png)
 
 # notes on running flask
 Externally Visible Server
