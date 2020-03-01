@@ -163,6 +163,18 @@ def util_date_time():
     return out
 
 #
+# station
+#
+@app.route('/play/<station>', methods=['POST'])
+def play_station(station):
+    dict = app.config["STATIONS"]
+    if not dict.has_key(station):
+       return "unknown station: {}".format(station)
+    stat = dict[station]
+    subprocess.Popen(["/usr/bin/mplayer","-playlist", stat])
+    return "play_station: {} - OK".format(stat)
+
+#
 # MAIN
 #
 if __name__ == '__main__':
