@@ -37,7 +37,7 @@ def play_pink():
 
 @app.route('/bible/', methods=['POST'])
 def play_bible():
-    subprocess.Popen(["/usr/bin/mplayer","-playlist","http://66.55.145.43:8018/listen.pls"])
+    subprocess.Popen(["/usr/bin/mplayer","-playlist","http://64.71.79.181:6552/listen.pls"])
     return "play_bible - OK"
 
 @app.route('/biblia/', methods=['POST'])
