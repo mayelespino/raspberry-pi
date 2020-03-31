@@ -22,6 +22,13 @@ echo $result;
 <form action="speaker.php" method="post">
     <hr/>
     <input type="submit" name="mute" value="mute"/>
+    <input type="submit" name="100%" value="100%"/>
+    <input type="submit" name="95%" value="95%"/>
+    <input type="submit" name="85%" value="85%"/>
+    <input type="submit" name="75%" value="75%"/>
+    <input type="submit" name="50%" value="50%"/>
+    <br/>
+    <hr/>
     <input type="submit" name="nature" value="nature"/>
     <input type="submit" name="scanner" value="scanner"/>
     <input type="submit" name="pink" value="pink"/>
@@ -36,11 +43,8 @@ echo $result;
     <input type="submit" name="siri_stop" value="siri_stop"/>
     <br/>
     <hr/>
-    <input type="submit" name="100%" value="100%"/>
-    <input type="submit" name="95%" value="95%"/>
-    <input type="submit" name="85%" value="85%"/>
-    <input type="submit" name="75%" value="75%"/>
-    <input type="submit" name="50%" value="50%"/>
+    <input type="submit" name="google_news" value="google_news"/>
+    <input type="submit" name="google_stop" value="google_stop"/>
     <br/>
     <hr/>
     <input type="submit" name="cron" value="cron"/>
@@ -133,6 +137,16 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['siri_stop']))
     siri("stop");
 }
 
+if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['google_news']))
+{
+    google("news");
+}
+
+if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['google_stop']))
+{
+    google("stop");
+}
+
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['cron']))
 {
   echo post_it("cron");
@@ -145,6 +159,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['date_time']))
 
 function siri($word){
 	$path = sprintf("siri_%s",$word);
+	echo post_it($path);
+}
+
+function google($word){
+	$path = sprintf("google_%s",$word);
 	echo post_it($path);
 }
 
