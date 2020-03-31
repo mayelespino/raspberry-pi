@@ -135,6 +135,20 @@ def siri_waitwait():
     return "siri_waitwait -  OK"
 
 #
+# Google assistant
+#
+
+@app.route('/google_news/', methods=['POST'])
+def google_news():
+    subprocess.Popen(["/usr/bin/mplayer","/media/mp3/text2speach/google_news.mp3"])
+    return "google_news -  OK"
+
+@app.route('/google_stop/', methods=['POST'])
+def google_stop():
+    subprocess.Popen(["/usr/bin/mplayer","/media/mp3/text2speach/google_stop.mp3"])
+    return "google_stop -  OK"
+
+#
 # Text to speach
 #
 @app.route('/whoisit/', methods=['POST'])
