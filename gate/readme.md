@@ -16,3 +16,8 @@
 - To get weather reports
   - http://www.webupd8.org/2016/04/get-weather-information-from-terminal.html 
   - Kudos to https://github.com/chubin/wttr.in
+
+#  To password protect
+
+- https://stackoverflow.com/questions/4115719/easy-way-to-password-protect-php-page
+
