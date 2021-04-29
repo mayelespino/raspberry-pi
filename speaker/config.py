@@ -23,5 +23,6 @@ class ProductionConfig(Config):
               "talk1" : "http://176.31.98.109:4962/listen.pls",
               "talk2" : "http://69.46.24.226:7006/listen.pls",
               "talk3" : "http://74.50.122.103:7372/listen.pls",
-              "talk4" : "http://95.211.3.65:9185/listen.pls"
+              "talk4" : "http://95.211.3.65:9185/listen.pls",
+              "bible" : "http://64.71.79.181:6552/listen.pls"
               }
