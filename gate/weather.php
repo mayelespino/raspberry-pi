@@ -1,14 +1,19 @@
 <html>
 <head>
+<style>
+body {
+  background-color: #DCDCDC;
+}
+</style>
 </head>
 <body>
-<h1>17440 Holiday Drive</h1>
+<h1>3336 Fontana Pl</h1>
 <h2>Ambiant sensors</h2>
 <br>
 <a href="index.php">[HOME]</a>
 <pre>
 <?php
-$homepage = file_get_contents('http://wttr.in/95037');
+$homepage = file_get_contents('http://wttr.in/94509');
 echo $homepage;
 ?>
 </pre>

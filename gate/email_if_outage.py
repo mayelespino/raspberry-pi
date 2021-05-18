@@ -25,7 +25,6 @@ def send_email():
 	server.close()
 
 if __name__ == '__main__':
-	emailWasSent = path.exists("/tmp/outage_email_sent.mem")
         sensorIsUp = True
 	try:
 		resp = requests.get('http://sensor.local')
@@ -33,11 +32,8 @@ if __name__ == '__main__':
 	except:
 		sensorIsUp = False
 
-	if sensorIsUp is False and emailWasSent is False:
-		open("/tmp/outage_email_sent.mem", 'a').close()
+	if !sensorIsUp:
 		send_email()
-	elif sensorIsUp is True and emailWasSent is True:
-		os.remove("/tmp/outage_email_sent.mem") 
 	
 #
 # End

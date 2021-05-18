@@ -31,6 +31,9 @@
   - name: install pip
     yum: name=python-pip state=present
 
+  - name: install twython
+    pip: name=twython
+
   - name: install flask
     pip: name=flask
 

@@ -2,7 +2,7 @@
 </head>
 <body>
 
-<h1>17440 Holiday Drive</h1>
+<h1>3336 Fontana </h1>
 <h2>Pi status</h2>
 
 <B>
@@ -77,9 +77,9 @@ if ($result != "IN" ) {
 </table>
 
 <h2>Weather</h2>
-<iframe src="http://wttr.in/95037" height="130" width="240"></iframe>
+<iframe src="http://wttr.in/94509" height="130" width="240"></iframe>
 <br>
-<a href="weather.php">Full weather 95037</a><br/>
+<a href="weather.php">Full weather 94509</a><br/>
 <br/>
 
 <h2>Spare the air</h2>
@@ -88,7 +88,6 @@ if ($result != "IN" ) {
 
 <h2>Alerts</h2>
 <a href="https://twitter.com/hashtag/alertscc">alertscc</a><br/>
-<a href="https://www.sccgov.org/sites/oes/alertscc/Pages/home.aspx">sccgov.org</a> <br/>
 <a href="https://m.pge.com/#outages">pgne outages</a><br/>
 <a href="http://www.sparetheair.org">sparetheair.org</a><br/>
 <br/>
