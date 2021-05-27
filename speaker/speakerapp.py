@@ -179,7 +179,7 @@ def util_date_time():
 #
 # station
 #
-@app.route('/play/<station>', methods=['POST'])
+@app.route('/play_station/<station>', methods=['POST'])
 def play_station(station):
     dict = app.config["STATIONS"]
     if not dict.has_key(station):
@@ -187,6 +187,13 @@ def play_station(station):
     stat = dict[station]
     subprocess.Popen(["/usr/bin/mplayer","-playlist", stat])
     return "play_station: {} - OK".format(stat)
+
+@app.route('/list_stations/', methods=['GET'])
+def list_station():
+    stationsDict = app.config["STATIONS"]
+    stationList = list(stationsDict.keys()) 
+    stationList.sort()
+    return ",".join(stationList)
 
 #
 # MAIN
