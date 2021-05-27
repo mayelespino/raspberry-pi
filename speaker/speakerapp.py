@@ -179,7 +179,7 @@ def util_date_time():
 #
 # station
 #
-@app.route('/station/<station>', methods=['POST'])
+@app.route('/play_station/<station>', methods=['POST'])
 def play_station(station):
     dict = app.config["STATIONS"]
     if not dict.has_key(station):
@@ -202,4 +202,3 @@ def list_station():
 #
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0')
-mpo
