@@ -190,12 +190,10 @@ def play_station(station):
 
 @app.route('/list_stations/', methods=['GET'])
 def list_station():
-    dict = app.config["STATIONS"]
-    stationList = ""
-    for key,value in dict:
-        stationList += (key + ",")
-
-    return stationList
+    stationsDict = app.config["STATIONS"]
+    stationList = list(stationsDict.keys()) 
+    stationList.sort()
+    return ",".join(stationList)
 
 #
 # MAIN
