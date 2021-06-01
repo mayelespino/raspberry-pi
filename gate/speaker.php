@@ -1,26 +1,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
-<body>
+<body style="background-color:powderblue;">
 
 <h1>3336 Fontana Pl</h1>
 <a href="index.php">[HOME]</a>
-
-<h2>Speaker</h2>
-
 <br/>
-<B>
 <?php
 date_default_timezone_set('America/Los_Angeles');
 $date   = new DateTime(); //this returns the current date time
 echo date_format($date,"Y/m/d H:i:s");
 echo $result;
 ?>
-<B/>
 <br/>
-<br/>
-
 <form action="speaker.php" method="post">
     <hr/>
+    <h2>Volume Control</h2>
     <input type="submit" name="mute" value="mute"/>
     <input type="submit" name="100%" value="100%"/>
     <input type="submit" name="95%" value="95%"/>
@@ -29,73 +23,51 @@ echo $result;
     <input type="submit" name="50%" value="50%"/>
     <br/>
     <hr/>
-    <input type="submit" name="nature" value="nature"/>
-    <input type="submit" name="scanner" value="scanner"/>
-    <input type="submit" name="pink" value="pink"/>
-    <input type="submit" name="birds" value="birds"/>
-    <input type="submit" name="kcbs" value="kcbs"/>
-    <input type="submit" name="bible" value="bible"/>
-    <input type="submit" name="biblia" value="biblia"/>
-    <br/>
-    <hr/>
-    <input type="submit" name="siri_news" value="siri_news"/>
-    <input type="submit" name="siri_waitwait" value="siri_waitwait"/>
-    <input type="submit" name="siri_stop" value="siri_stop"/>
-    <br/>
-    <hr/>
-    <input type="submit" name="google_news" value="google_news"/>
-    <input type="submit" name="google_stop" value="google_stop"/>
-    <br/>
-    <hr/>
+    <h2>Information</h2>
     <input type="submit" name="cron" value="cron"/>
     <input type="submit" name="date_time" value="date_time"/>
     <br/>
     <hr/>
+
 </form>
-<br/>
+<h2>Sounds Presets</h2>
+
+<form action="" method="post">
+    <select name="preset">
+        <?php
+        $sounds = array("nature","scanner","pink", "biblia", "nature", "kcbs", "birds", "bible");
+        
+        foreach($sounds as $item){
+            echo "<option value='$item'>$item</option>";
+        }
+        ?>
+    </select>
+
+    <input type="submit" name="submit" vlaue="Choose options">
+</form>
+
+<hr/>
+<h2>Output</h2>
+
+<?php
+    if(isset($_POST['submit'])){
+    if(!empty($_POST['preset'])) {
+       $selected = $_POST['preset'];
+       post_it("mute");
+       echo post_it($selected);
+    } else {
+        echo 'Please select the value.';
+    }
+    }
+?>
 
 <?php 
-
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['mute']))
 {
   echo post_it("mute");
 }
 
-if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['nature']))
-{
-  echo post_it("nature");
-}
-
-if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['scanner']))
-{
-  echo post_it("scanner");
-}
-
-if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['pink']))
-{
-  echo post_it("pink");
-}
-
-if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['birds']))
-{
-  echo post_it("birds");
-}
-
-if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['kcbs']))
-{
-  echo post_it("kcbs");
-}
-
-if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['bible']))
-{
-  echo post_it("bible");
-}
-
-if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['biblia']))
-{
-  echo post_it("biblia");
-}
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['100%']))
 {

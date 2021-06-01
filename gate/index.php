@@ -82,38 +82,23 @@ if ($result != "IN" ) {
 <a href="weather.php">Full weather 94509</a><br/>
 <br/>
 
-<h2>Spare the air</h2>
-<iframe src="http://baaqmdmapsprod.azurewebsites.net/map-open-burn.html" frameborder="0" height="300" width="300" allowfullscreen="true"></iframe>
-<br>
-
 <h2>Alerts</h2>
 <a href="https://twitter.com/hashtag/alertscc">alertscc</a><br/>
 <a href="https://m.pge.com/#outages">pgne outages</a><br/>
 <a href="http://www.sparetheair.org">sparetheair.org</a><br/>
 <br/>
+
 <h2>Traffic</h2>
 <a href="https://511.org">511.org - Traffic map</a><br/>
 <a href="https://511.org/alerts/traffic">511.org - Traffic alerts</a><br/>
 <a href="https://511.org/alerts/transit">511.org - Transist alerts</a><br/>
 <br/>
 
-<h2>Phone numbers</h2>
-<table>
-<tr>
-<td>
-(408) 808-4400 - Santa Clara County Sheriff's Department, Phone
-</td>
-</tr>
-<tr>
-<td>
-(408) 615-4900 - Santa Clara City Fire Department, Phone
-</td>
-</tr>
-<tr>
-<td>
-1-800-743-5002 - PGNE
-</td>
-</tr>
-</table>
+
+<h2>Quote</h2>
+<script type="text/javascript" src="https://www.brainyquote.com/link/quotebr.js"></script>
+<small><i><a href="/quote_of_the_day" target="_blank" rel="nofollow">more Quotes</a></i></small>
+
+
 </body>
 </html>
