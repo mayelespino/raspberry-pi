@@ -54,6 +54,52 @@ Web pages with stations:
   - http://69.46.24.226:7006/listen.pls
   - http://74.50.122.103:7372/listen.pls
   - http://95.211.3.65:9185/listen.pls - Science Fiction
+
+# new batch of streaming stations
+- Emmanuel Y Linda - Tu Gracia 
+https://www.internet-radio.com/servers/tools/playlistgenerator/?u=http://usa6.fastcast4u.com:5112/autodj&t=.pls
+
+- Radio Amistad Kissimmee 
+https://www.internet-radio.com/servers/tools/playlistgenerator/?u=http://94.23.6.53:8620/listen.pls?sid=1&t=.pls
+
+- Sleepscapes | Rain 
+https://www.internet-radio.com/servers/tools/playlistgenerator/?u=http://198.27.120.235:8850/listen.pls?sid=1&t=.pls
+
+- Matt Johnson Meditation
+https://www.internet-radio.com/servers/tools/playlistgenerator/?u=http://us2.internet-radio.com:8046/listen.pls&t=.pls
+
+- Instrumentals Forever 
+https://www.internet-radio.com/servers/tools/playlistgenerator/?u=http://184.75.223.178:8151/listen.pls?sid=1&t=.pls
+
+- Shine Digital Christian Radio 
+https://www.internet-radio.com/servers/tools/playlistgenerator/?u=http://uk5.internet-radio.com:8204/listen.pls&t=.pls
+
+- ChroniX | AGGRESSION® 
+https://www.internet-radio.com/servers/tools/playlistgenerator/?u=http://192.95.18.39:5784/listen.pls?sid=1&t=.pls
+
+- Playing Piano At Home Alone 
+https://www.internet-radio.com/servers/tools/playlistgenerator/?u=http://158.69.224.10:8004/listen.pls?sid=1&t=.pls
+
+- CALMRADIO.COM - Classical Guitar 
+https://www.internet-radio.com/servers/tools/playlistgenerator/?u=http://23.82.11.89:2728/listen.pls?sid=1&t=.pls
+
+- GENERATION SOUL DISCO FUNK RADIO [HD] 
+https://www.internet-radio.com/servers/tools/playlistgenerator/?u=http://91.121.104.123:8000/listen.pls?sid=1&t=.pls
+
+- Studio Dance - Italian
+https://www.internet-radio.com/servers/tools/playlistgenerator/?u=https://stream.laut.fm/studiodance.m3u&t=.pls
+
+- POP EN ESPAÑOL 
+https://www.internet-radio.com/servers/tools/playlistgenerator/?u=http://167.114.116.223:9823/listen.pls?sid=1&t=.pls
+
+- Ambiesphere 
+https://www.internet-radio.com/servers/tools/playlistgenerator/?u=http://uk5.internet-radio.com:8347/listen.pls&t=.pls
+
+- Real World Sounds 
+https://www.internet-radio.com/servers/tools/playlistgenerator/?u=http://uk5.internet-radio.com:8260/listen.pls&t=.pls
+
+
+
 # Pages that have internet streaming
   - https://www.radioforge.com/faqs/find-valid-radio-stream-url-from-icecast-or-shoutcast-pls-m3u-xspf/
 
