@@ -2,14 +2,17 @@ from flask import Flask
 import subprocess 
 
 app = Flask(__name__)
+app.config.from_object("config.ProductionConfig")
 
 #
 # Health check
 #
 
 @app.route('/')
-def hello_world():
-    return 'OK'
+def root():
+    dict = app.config["STATIONS"]
+    stations = str(dict).replace(",","<BR/>\n")
+    return stations
 
 #
 # Internet Radio
@@ -34,7 +37,7 @@ def play_pink():
 
 @app.route('/bible/', methods=['POST'])
 def play_bible():
-    subprocess.Popen(["/usr/bin/mplayer","-playlist","http://66.55.145.43:8018/listen.pls"])
+    subprocess.Popen(["/usr/bin/mplayer","-playlist","http://108.163.223.242:8309/listen.pls"])
     return "play_bible - OK"
 
 @app.route('/biblia/', methods=['POST'])
@@ -66,6 +69,16 @@ def play_kcbs():
 def play_kqed():
     subprocess.Popen(["/usr/bin/omxplayer","https://streams.kqed.org/kqedradio"])
     return "play_kqed - OK"
+
+@app.route('/dogs/', methods=['POST'])
+def play_dogrelax():
+    subprocess.Popen(["/usr/bin/mplayer","-playlist","http://yp.shoutcast.com/sbin/tunein-station.pls?id=1794904"])
+    return "play_dogrelax - OK"
+
+@app.route('/talking/', methods=['POST'])
+def play_talking():
+    subprocess.Popen(["/usr/bin/mplayer","-playlist","http://74.50.122.103:7372/listen.pls"])
+    return "play_talking - OK"
 
 #
 # Volume
@@ -122,6 +135,20 @@ def siri_waitwait():
     return "siri_waitwait -  OK"
 
 #
+# Google assistant
+#
+
+@app.route('/google_news/', methods=['POST'])
+def google_news():
+    subprocess.Popen(["/usr/bin/mplayer","/media/mp3/text2speach/google_news.mp3"])
+    return "google_news -  OK"
+
+@app.route('/google_stop/', methods=['POST'])
+def google_stop():
+    subprocess.Popen(["/usr/bin/mplayer","/media/mp3/text2speach/google_stop.mp3"])
+    return "google_stop -  OK"
+
+#
 # Text to speach
 #
 @app.route('/whoisit/', methods=['POST'])
@@ -148,6 +175,25 @@ def util_date_time():
     p = subprocess.Popen(["/bin/date"], stdout=subprocess.PIPE)
     out, err = p.communicate()
     return out
+
+#
+# station
+#
+@app.route('/play_station/<station>', methods=['POST'])
+def play_station(station):
+    dict = app.config["STATIONS"]
+    if not dict.has_key(station):
+       return "unknown station: {}".format(station)
+    stat = dict[station]
+    subprocess.Popen(["/usr/bin/mplayer","-playlist", stat])
+    return "play_station: {} - OK".format(stat)
+
+@app.route('/list_stations/', methods=['GET'])
+def list_station():
+    stationsDict = app.config["STATIONS"]
+    stationList = list(stationsDict.keys()) 
+    stationList.sort()
+    return ",".join(stationList)
 
 #
 # MAIN

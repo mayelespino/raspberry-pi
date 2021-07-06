@@ -8,7 +8,7 @@
 
   - name: Apt install packages
     apt:
-      name: ['nginx', 'bluez', 'python-bluez']
+      name: ['nginx', 'bluez', 'python-bluez', 'speedtest-cli']
       state: latest
       update_cache: yes
     tags:

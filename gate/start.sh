@@ -1,3 +1,3 @@
 #!/bin/sh
-ngrok start home --config=ngrok.yaml -log=stdout > /dev/null &
+ngrok start home --config=ngrok.yml -log=stdout > /dev/null &
 
