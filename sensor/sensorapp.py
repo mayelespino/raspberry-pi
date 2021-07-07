@@ -58,6 +58,18 @@ def bt_status():
     with open('/mnt/ramdisk/bluetooth-status.txt','r') as f:
         data = f.read()
     return data
+
+@app.route('/speedtest/')
+def speedtest():
+    with open('/mnt/ramdisk/speedtest.txt','r') as f:
+        data = f.read()
+    return data
+
+@app.route('/speedtest-history/')
+def speedtest_history():
+    with open('/mnt/ramdisk/speedtest-history.txt','r') as f:
+        data = f.read()
+    return data
 #
 #
 #
