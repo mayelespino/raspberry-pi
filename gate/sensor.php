@@ -130,5 +130,16 @@ foreach($arr as $line) {
 
 ?>
 
+<h3>Speedtest</h3>
+<?php
+$homepage = file_get_contents('http://sensor.local:5000/speedtest/');
+$arr = explode("\n", $homepage);
+foreach($arr as $line) {
+   echo $line;
+   echo "</br>";
+} // for 
+
+?>
+
 </body>
 </html>
