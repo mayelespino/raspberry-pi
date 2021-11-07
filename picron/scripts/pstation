@@ -1,2 +1,0 @@
-#!/bin/zsh
-curl -X POST http://picron.local:5000/play/${1}/now/

@@ -1,6 +1,0 @@
-[all]
-sensor.local
-
-[all:vars]
-ansible_user=pi
-ansible_ssh_pass=raspberry
